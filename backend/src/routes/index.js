@@ -1,3 +1,7 @@
+/*eslint strict: ["error", "global"]*/
+
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
