@@ -1,0 +1,30 @@
+@import '../../main.scss';
+.notfound-container {
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  .outer-box {
+    background-color: #36377c;
+    position: absolute;
+    height: 50%;
+    width: 20%;
+    border-radius: 2rem;
+    display: grid;
+    place-items: center;
+  }
+  .inner-box {
+    background-color: #0e100f;
+    height: 90%;
+    width: 80%;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+    .title {
+      color: #ffffff;
+      font-size: 5rem;
+      font-weight: bold;
+      margin-bottom: -4rem;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import '../../../main.scss';
+.logo {
+  width: 10rem;
+  height: auto;
+}
+.search-box {
+  background-color: $search-input-bg;
+  border: 1px solid #f9fafa !important;
+  font-family: 'SegoeUI';
+  outline: none;
+  &:focus {
+    box-shadow: 2px 2px $focus-primary-color;
+    border: 1px solid $focus-primary-color !important;
+  }
+}
+
+.ask-btn {
+  background-color: $btn-primary-bg;
+  width: 4.5rem;
+  height: 2rem;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &:focus {
+    box-shadow: none;
+  }
+  &:hover {
+    color: #ffffff;
+  }
+  span {
+    font-weight: bold;
+    align-self: flex-start;
+  }
+}
+.nav-items {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  .profile {
+    width: 2rem;
+    height: auto;
+  }
+}
