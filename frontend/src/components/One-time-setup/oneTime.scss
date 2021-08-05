@@ -1,0 +1,53 @@
+@import '../../main.scss';
+* {
+  font-family: 'Segoe UI';
+}
+.setup-container {
+  background: url('../../assets/onetimesetup.svg') repeat;
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  .inner-container {
+    height: 80%;
+    overflow-y: auto;
+    width: 40%;
+    background: #ffffff;
+    padding: 2%;
+    border: 2px solid #000000;
+    box-shadow: 5px 5px #000000;
+  }
+  .setup-sub-title {
+    color: $muted-text-color;
+  }
+  .data-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    .company-item {
+      border: 1px solid $muted-text-color;
+      border-radius: 5px;
+      padding: 5%;
+      min-height: 100px;
+    }
+  }
+  button {
+    min-width: 8rem;
+    height: 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    align-self: center;
+    font-weight: bolder;
+    &:focus {
+      box-shadow: none;
+    }
+    &.finish-btn {
+      background-color: $btn-primary-bg;
+      position: absolute;
+      bottom: 12%;
+      right: 32%;
+    }
+  }
+}

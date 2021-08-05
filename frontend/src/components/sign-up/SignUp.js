@@ -8,6 +8,7 @@ import {
   isValidEmail,
   checkIfUsernameExists,
   checkIfEmailExists,
+  getCompanyNameFromEmail,
 } from '../../utils/Helper';
 import { AuthContext } from '../../context/context';
 
@@ -141,13 +142,27 @@ const SignUp = () => {
         return;
       }
       await registerUser(workEmail, password);
-      await app.firestore().collection('usernames').doc(username).set({
-        username,
-        personalEmail,
-        workEmail,
-        isPersonalEmailVerified: false,
-        isWorkEmailVerified: false,
-      });
+      await app.auth().currentUser.sendEmailVerification();
+      await app
+        .firestore()
+        .collection('usernames')
+        .doc(username)
+        .set({ username });
+      await app
+        .firestore()
+        .collection('users')
+        .doc(workEmail)
+        .set({
+          username,
+          personalEmail,
+          workEmail,
+          interests: [],
+          isPersonalEmailVerified: false,
+          isWorkEmailVerified: false,
+          isOneTimeSetupCompleted: false,
+          createdAt: new Date(),
+          company: getCompanyNameFromEmail(workEmail),
+        });
       setLoading(!loading);
       history.push('/verify');
     } catch (error) {
@@ -161,7 +176,6 @@ const SignUp = () => {
   if (loading) {
     return <Spinner />;
   }
-  const { usernameValid, workEmailValid, personalEmailValid } = formValidation;
   return (
     <div>
       <div className='signup-container'>
@@ -199,7 +213,6 @@ const SignUp = () => {
                 </label>
                 <input
                   ref={workEmailRef}
-                  disabled={!usernameValid}
                   type='email'
                   className='form-control '
                   id='workEmail'
@@ -220,7 +233,6 @@ const SignUp = () => {
                 </label>
                 <input
                   ref={personalEmailRef}
-                  disabled={!workEmailValid}
                   type='email'
                   className='form-control '
                   id='persoanlEmail'
@@ -243,7 +255,6 @@ const SignUp = () => {
                 </label>
                 <input
                   ref={passwordRef}
-                  disabled={!personalEmailValid}
                   type='password'
                   className='form-control'
                   placeholder='Password'

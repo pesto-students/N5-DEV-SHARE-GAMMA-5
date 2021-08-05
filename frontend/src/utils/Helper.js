@@ -12,3 +12,7 @@ export const checkIfUsernameExists = (username) => {
 export const checkIfEmailExists = (email) => {
   return app.auth().fetchSignInMethodsForEmail(email);
 };
+
+export const getCompanyNameFromEmail = (email) => {
+  return email.split('@')[1].split('.')[0];
+};

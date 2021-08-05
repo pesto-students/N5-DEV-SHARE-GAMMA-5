@@ -35,26 +35,31 @@ const Navbar = ({ isSignUpPage }) => {
               style={{ marginLeft: !app.auth().currentUser && '-4rem' }}
             />
           </form>
-          {authContext && authContext.currentUser && (
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0 nav-items'>
-              <li className='nav-item'>
-                <button
-                  className='btn btn-sm ask-btn'
-                  aria-current='page'
-                  href='#'
+          {authContext &&
+            authContext.currentUser &&
+            authContext.currentUser.emailVerified && (
+              <ul className='navbar-nav me-auto mb-2 mb-lg-0 nav-items'>
+                <li className='nav-item'>
+                  <button
+                    className='btn btn-sm ask-btn'
+                    aria-current='page'
+                    href='#'
+                  >
+                    <i className='fas fa-comment-alt'></i>
+                    <span>Ask</span>
+                  </button>
+                </li>
+                <li className='nav-item mx-3'>
+                  <i className='far fa-bell fa-2x position-relative'></i>
+                </li>
+                <li
+                  className='nav-item mx-3'
+                  onClick={() => authContext.logout()}
                 >
-                  <i className='fas fa-comment-alt'></i>
-                  <span>Ask</span>
-                </button>
-              </li>
-              <li className='nav-item mx-3'>
-                <i className='far fa-bell fa-2x position-relative'></i>
-              </li>
-              <li className='nav-item mx-3'>
-                <img className='profile' src={profileImg} alt='' />
-              </li>
-            </ul>
-          )}
+                  <img className='profile' src={profileImg} alt='' />
+                </li>
+              </ul>
+            )}
         </div>
       </div>
     </nav>
