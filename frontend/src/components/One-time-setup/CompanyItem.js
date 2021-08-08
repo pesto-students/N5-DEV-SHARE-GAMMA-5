@@ -7,6 +7,12 @@ const colors = [
   '#4A245D',
   '#26BE00',
   '#73C7E6',
+  '#3B49DF',
+  '#EA4E28',
+  '#3C9559',
+  '#4A245D',
+  '#26BE00',
+  '#73C7E6',
 ];
 // eslint-disable-next-line
 const CompanyItem = ({

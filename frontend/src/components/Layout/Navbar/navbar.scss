@@ -42,4 +42,14 @@
     width: 2rem;
     height: auto;
   }
+  .dropdown-menu {
+    width: fit-content;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  .dropdown-item:active {
+    background-color: $btn-primary-bg;
+  }
 }

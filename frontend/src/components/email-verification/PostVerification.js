@@ -9,7 +9,6 @@ const PostVerification = () => {
     if (timer > 0) {
       setTimeout(() => {
         setTimer(timer - 1);
-        console.log('yes');
       }, 1000);
     }
   };

@@ -1,0 +1,73 @@
+@import '../../main.scss';
+.profile-container {
+  min-height: 80vh;
+  overflow-y: visible;
+  position: relative;
+  .background-container {
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #6678df;
+  }
+  .profile-details-container {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    .profile-img {
+      display: block;
+      min-height: 10vh;
+      margin: auto;
+      transform: translateY(-80%);
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+    .profile-name {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: -2rem;
+      font-weight: bold;
+    }
+    .basic-details {
+      display: flex;
+      margin-top: 2rem;
+      width: 50%;
+      margin: auto;
+      justify-content: center;
+      li {
+        display: flex;
+        margin: 1rem 1rem 0 0;
+        img {
+          height: 20px;
+          margin-right: 0.7rem;
+        }
+      }
+    }
+    button {
+      background-color: $btn-primary-bg;
+      display: block;
+      margin: auto;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+  .profile-additionals-container {
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 2fr;
+    margin: auto;
+    border: none;
+    padding: 0;
+    margin-top: 1rem;
+    .skills-container {
+      padding-left: 1rem;
+    }
+    .user-activity-container {
+      border: none;
+      .question-1 {
+        min-height: 10vh;
+        width: 35vw;
+      }
+    }
+  }
+}

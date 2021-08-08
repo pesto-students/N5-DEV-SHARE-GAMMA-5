@@ -5,8 +5,8 @@ export const isValidEmail = (email) => {
   return re.test(String(email).toLowerCase());
 };
 
-export const checkIfUsernameExists = (username) => {
-  return app.firestore().collection('usernames').doc(username).get();
+export const checkIfNickNameExists = (username) => {
+  return app.firestore().collection('nickNames').doc(username).get();
 };
 
 export const checkIfEmailExists = (email) => {

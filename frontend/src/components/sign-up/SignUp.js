@@ -6,7 +6,7 @@ import Spinner from '../spinner/Spinner';
 import app from '../../firebase';
 import {
   isValidEmail,
-  checkIfUsernameExists,
+  checkIfNickNameExists,
   checkIfEmailExists,
   getCompanyNameFromEmail,
 } from '../../utils/Helper';
@@ -15,27 +15,23 @@ import { AuthContext } from '../../context/context';
 const SignUp = () => {
   const { registerUser, currentUser } = useContext(AuthContext);
   const history = useHistory();
-  const usernameRef = useRef();
+  const nickNameRef = useRef();
   const workEmailRef = useRef();
-  const personalEmailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [userDetails, setUserDetails] = useState({
-    username: '',
+    nickName: '',
     workEmail: '',
-    personalEmail: '',
     password: '',
   });
   const [formValidation, setFormValidation] = useState({
-    usernameValid: false,
+    nickNameValid: false,
     workEmailValid: false,
-    personalEmailValid: false,
     passwordValid: false,
-    submitDisabled: true,
   });
   useEffect(() => {
-    usernameRef && usernameRef.current && usernameRef.current.focus();
+    nickNameRef && nickNameRef.current && nickNameRef.current.focus();
   }, []);
 
   useEffect(() => {
@@ -44,30 +40,27 @@ const SignUp = () => {
   }, [error]);
 
   const canFormBeSubmitted = () => {
-    const { usernameValid, workEmailValid, personalEmailValid, passwordValid } =
-      formValidation;
-    return (
-      usernameValid && workEmailValid && personalEmailValid && passwordValid
-    );
+    const { nickNameValid, workEmailValid, passwordValid } = formValidation;
+    return nickNameValid && workEmailValid && passwordValid;
   };
 
-  const handleNickName = async (username) => {
+  const handleNickName = async (nickName) => {
     setFormValidation({
       ...formValidation,
-      usernameValid: false,
+      nickNameValid: false,
     });
-    if (username.length < 6 || username.length > 10) {
-      setError('Username must be between 6-10 characters');
+    if (nickName.length < 6 || nickName.length > 10) {
+      setError('nickName must be between 6-10 characters');
       return;
     }
-    const doesUsernameNameExists = await checkIfUsernameExists(username);
-    if (doesUsernameNameExists.exists) {
-      setError('Username already exists!');
+    const doesnickNameNameExists = await checkIfNickNameExists(nickName);
+    if (doesnickNameNameExists.exists) {
+      setError('nickName already exists!');
       return;
     }
     setFormValidation({
       ...formValidation,
-      usernameValid: true,
+      nickNameValid: true,
     });
     workEmailRef.current.focus();
   };
@@ -77,10 +70,6 @@ const SignUp = () => {
       ...formValidation,
       workEmailValid: false,
     });
-    if (userDetails.personalEmail === userDetails.workEmail) {
-      setError('Work and Personal Email are same');
-      return;
-    }
     if (!isValidEmail(email)) {
       setError('Enter a valid Email');
       return;
@@ -93,26 +82,6 @@ const SignUp = () => {
     setFormValidation({
       ...formValidation,
       workEmailValid: true,
-    });
-    personalEmailRef.current.focus();
-  };
-
-  const handlePersonalEmail = async (email) => {
-    setFormValidation({
-      ...formValidation,
-      personalEmailValid: false,
-    });
-    if (userDetails.personalEmail === userDetails.workEmail) {
-      setError('Work and Personal Email are same');
-      return;
-    }
-    if (!isValidEmail(email)) {
-      setError('Enter a valid Email');
-      return;
-    }
-    setFormValidation({
-      ...formValidation,
-      personalEmailValid: true,
     });
     passwordRef.current.focus();
   };
@@ -134,39 +103,43 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(!loading);
+    setLoading(true);
     try {
-      const { username, workEmail, personalEmail, password } = userDetails;
+      const { nickName, workEmail, password } = userDetails;
       if (!canFormBeSubmitted()) {
-        setLoading(!loading);
+        setLoading(false);
         return;
       }
       await registerUser(workEmail, password);
       await app.auth().currentUser.sendEmailVerification();
       await app
         .firestore()
-        .collection('usernames')
-        .doc(username)
-        .set({ username });
+        .collection('nickNames')
+        .doc(nickName)
+        .set({ nickName });
       await app
         .firestore()
         .collection('users')
         .doc(workEmail)
         .set({
-          username,
-          personalEmail,
+          nickName,
           workEmail,
           interests: [],
-          isPersonalEmailVerified: false,
           isWorkEmailVerified: false,
           isOneTimeSetupCompleted: false,
           createdAt: new Date(),
           company: getCompanyNameFromEmail(workEmail),
+          profileDetails: {
+            jobTitle: '',
+            location: '',
+            education: '',
+            skills: '',
+          },
         });
-      setLoading(!loading);
+      setLoading(false);
       history.push('/verify');
     } catch (error) {
-      setLoading(!loading);
+      setLoading(false);
       setError('Something went wrong');
     }
   };
@@ -189,19 +162,19 @@ const SignUp = () => {
             <form>
               <div className='mb-3'>
                 <label htmlFor='nickName' className='form-label'>
-                  Username
+                  Nickname
                 </label>
                 <input
-                  ref={usernameRef}
+                  ref={nickNameRef}
                   type='text'
                   className='form-control '
                   id='nickName'
                   placeholder='bekBrace'
-                  value={userDetails.username}
+                  value={userDetails.nickName}
                   onChange={(e) =>
                     setUserDetails({
                       ...userDetails,
-                      username: e.target.value,
+                      nickName: e.target.value,
                     })
                   }
                   onBlur={(e) => handleNickName(e.target.value)}
@@ -225,28 +198,6 @@ const SignUp = () => {
                     })
                   }
                   onBlur={(e) => handleWorkEmail(e.target.value.toLowerCase())}
-                />
-              </div>
-              <div className='mb-3'>
-                <label htmlFor='persoanlEmail' className='form-label'>
-                  Personal Email
-                </label>
-                <input
-                  ref={personalEmailRef}
-                  type='email'
-                  className='form-control '
-                  id='persoanlEmail'
-                  placeholder='abc@xyz.com'
-                  value={userDetails.personalEmail}
-                  onChange={(e) =>
-                    setUserDetails({
-                      ...userDetails,
-                      personalEmail: e.target.value,
-                    })
-                  }
-                  onBlur={(e) =>
-                    handlePersonalEmail(e.target.value.toLowerCase())
-                  }
                 />
               </div>
               <div className='mb-3'>

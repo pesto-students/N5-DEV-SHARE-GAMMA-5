@@ -10,6 +10,8 @@ import NotFound from '../Not-Found/NotFound';
 import Dashboard from '../Dashboard/Dashboard';
 import PostVerification from '../email-verification/PostVerification';
 import OneTimeSetup from '../One-time-setup/OneTimeSetup';
+import Settings from '../settings/Settings';
+import UserProfile from '../user-profile/UserProfile';
 import { AuthProvider } from '../../context/context';
 
 const Router = () => {
@@ -25,9 +27,15 @@ const Router = () => {
             component={PostVerification}
           />
           <Route exact path='/register' component={SignUp} />
-          <PrivateRoute exact path='/onboarding-setup' component={OneTimeSetup} />
+          <PrivateRoute
+            exact
+            path='/onboarding-setup'
+            component={OneTimeSetup}
+          />
           <PrivateRoute exact path='/verify' component={VerifyEmail} />
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path='/settings' component={Settings} />
+          <PrivateRoute exact path='/user/:nickName' component={UserProfile} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

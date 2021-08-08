@@ -1,7 +1,7 @@
 /*eslint-disable */
 import React, { useEffect, useState, useContext } from 'react';
 import './oneTime.scss';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import app from '../../firebase';
 import firebase from 'firebase/app';
 import Spinner from '../spinner/Spinner';
@@ -9,6 +9,7 @@ import CompanyItem from './CompanyItem';
 import { AuthContext } from '../../context/context';
 
 const OneTimeSetup = () => {
+  const history = useHistory();
   const { currentUser } = useContext(AuthContext);
   const [companies, setCompanies] = useState([]);
   const [onboarded, setOnboarded] = useState(false);
@@ -30,9 +31,9 @@ const OneTimeSetup = () => {
       setOnboarded(true);
     }
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (count < 5) return;
-    app
+    await app
       .firestore()
       .collection('users')
       .doc(currentUser.email)
@@ -41,6 +42,7 @@ const OneTimeSetup = () => {
           ...selectedCompanies
         ),
       });
+    history.push('/settings');
   };
   useEffect(() => {
     fetchCompanies();
