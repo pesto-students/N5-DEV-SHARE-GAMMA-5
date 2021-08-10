@@ -5,12 +5,37 @@ import app from '../../firebase';
 import NotFound from '../Not-Found/NotFound';
 import dateImg from '../../assets/date-img.png';
 import locationImg from '../../assets/location-img.png';
+import Spinner from '../spinner/Spinner';
 
 const UserProfile = (props) => {
   // eslint-disable-next-line
   const user = props.match.params.nickName;
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
+
+  const SkillsComponent = () => {
+    const [skills, setSkills] = useState([]);
+    const splitSkills = () => {
+      if (profile) {
+        const result = [];
+        profile.profileDetails.skills
+          .split(',')
+          .forEach((skill) => result.push(skill));
+        setSkills(result);
+      }
+    };
+    useEffect(() => splitSkills(), {});
+    if (skills) {
+      return (
+        <div className='skills-section'>
+          {skills.map((skill) => (
+            <p>{skill}</p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
   const fetchProfile = async () => {
     let userProfile;
     const data = await app
@@ -51,21 +76,47 @@ const UserProfile = (props) => {
               <h6>{profile.createdAt.toDate().toDateString()}</h6>
             </li>
           </ul>
-          <button type='button' className='btn mt-2'>
-            Request Mentorship
-          </button>
+          <hr />
+          <ul className='work-education-details'>
+            <li>
+              <h6 className='text-center'>Work</h6>
+              <h6>
+                <span>
+                  {profile.profileDetails.jobTitle
+                    ? `${profile.profileDetails.jobTitle} @`
+                    : ''}
+                </span>{' '}
+                {profile.company}
+              </h6>
+            </li>
+
+            {profile.profileDetails.education && (
+              <li>
+                <h6 className='text-center'>Education</h6>
+                <h6>{profile.profileDetails.education}</h6>
+              </li>
+            )}
+          </ul>
+          <hr />
+          {profile.isMentor && (
+            <button type='button' className='btn mt-2'>
+              Request Mentorship
+            </button>
+          )}
         </div>
         <div className='profile-additionals-container'>
-          <div className='skills-container'>
-            <h6>Skills/Languages</h6>
-            <hr />
-            <p>ReactJs</p>
-            <p>NodeJs</p>
-            <p>NextJs</p>
-            <p>DevOps</p>
-          </div>
+          {profile.profileDetails.skills && (
+            <div className='skills-container'>
+              <h6 className='mt-3 me-4'>Skills/Languages</h6>
+              <hr />
+              <SkillsComponent />
+            </div>
+          )}
+
           <div className='user-activity-container'>
             <h5>Recent Activity</h5>
+            <div className='question-1' />
+            <div className='question-1' />
             <div className='question-1' />
             <div className='question-1' />
           </div>
@@ -73,7 +124,7 @@ const UserProfile = (props) => {
       </div>
     );
   }
-  return null;
+  return <Spinner />;
 };
 
 export default UserProfile;

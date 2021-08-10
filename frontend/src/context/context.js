@@ -46,7 +46,6 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      // eslint-disable-next-line
       value={{
         currentUser,
         loginUser,

@@ -12,7 +12,9 @@ import PostVerification from '../email-verification/PostVerification';
 import OneTimeSetup from '../One-time-setup/OneTimeSetup';
 import Settings from '../settings/Settings';
 import UserProfile from '../user-profile/UserProfile';
+import CompanyDetail from '../company-detail/CompanyDetail';
 import { AuthProvider } from '../../context/context';
+import QuestionDetail from '../question-details/QuestionDetail';
 
 const Router = () => {
   return (
@@ -27,6 +29,7 @@ const Router = () => {
             component={PostVerification}
           />
           <Route exact path='/register' component={SignUp} />
+          <Route exact path='/company/:company' component={CompanyDetail} />
           <PrivateRoute
             exact
             path='/onboarding-setup'
@@ -35,7 +38,8 @@ const Router = () => {
           <PrivateRoute exact path='/verify' component={VerifyEmail} />
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
           <PrivateRoute exact path='/settings' component={Settings} />
-          <PrivateRoute exact path='/user/:nickName' component={UserProfile} />
+          <Route exact path='/user/:nickName' component={UserProfile} />
+          <Route exact path='/question/:id' component={QuestionDetail} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

@@ -7,19 +7,30 @@ import notificationImg from '../../assets/notifications.png';
 import Profile from './profile/Profile';
 import Account from './account/Account';
 import Notification from './notification/Notification';
+import Loader from '../../assets/settings-loader.svg';
 
 const Settings = () => {
   const { userDetails, fetchUserData } = useContext(AuthContext);
   const [component, setComponent] = useState('profile');
-
+  const [loading, setLoading] = useState(false);
   const ToRender = () => {
     if (component === 'profile') {
       return (
-        <Profile userDetails={userDetails} fetchUserData={fetchUserData} />
+        <Profile
+          userDetails={userDetails}
+          fetchUserData={fetchUserData}
+          setLoading={setLoading}
+        />
       );
     }
     if (component === 'account') {
-      return <Account />;
+      return (
+        <Account
+          userDetails={userDetails}
+          fetchUserData={fetchUserData}
+          setLoading={setLoading}
+        />
+      );
     }
     if (component === 'notification') {
       return <Notification />;
@@ -67,7 +78,13 @@ const Settings = () => {
               </ul>
             </div>
             <div className='settings-details'>
-              <ToRender />
+              {loading ? (
+                <div className='settings-loader'>
+                  <img src={Loader} alt='' />
+                </div>
+              ) : (
+                <ToRender />
+              )}
             </div>
           </div>
         </>

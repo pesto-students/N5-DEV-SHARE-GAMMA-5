@@ -1,0 +1,61 @@
+@import '../../main.scss';
+
+.company-container {
+  background-color: $primary-body-bg;
+  max-height: 100vh;
+  padding: 5% 0 10% 5%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  .company-details-container {
+    background: #ffffff;
+    width: 80%;
+    border-radius: 5px;
+  }
+  .header-container {
+    border-radius: 5px;
+    .banner-section {
+      height: 15vh;
+      border-radius: 5px 5px 0 0;
+    }
+    .logo-section {
+      margin-top: -2rem;
+      padding-left: 2%;
+      display: flex;
+      img {
+        height: 80px;
+      }
+    }
+    .follow-btn {
+      display: flex;
+      padding-right: 1%;
+      justify-content: flex-end;
+      button {
+        background: $btn-primary-bg;
+        height: 30px;
+        color: #ffffff;
+        font-weight: bold;
+        &:focus {
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .company-name {
+      padding-left: 2%;
+    }
+  }
+  .company-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 30vh;
+    .questions-container,
+    .users-containers {
+      padding: 0 2% 0 2%;
+    }
+    .questions-container {
+      // border-right: 1px solid #cccccc;
+    }
+  }
+}

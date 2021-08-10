@@ -1,23 +1,7 @@
 import React, { useState } from 'react';
 
-const colors = [
-  '#3B49DF',
-  '#EA4E28',
-  '#3C9559',
-  '#4A245D',
-  '#26BE00',
-  '#73C7E6',
-  '#3B49DF',
-  '#EA4E28',
-  '#3C9559',
-  '#4A245D',
-  '#26BE00',
-  '#73C7E6',
-];
-// eslint-disable-next-line
 const CompanyItem = ({
   company,
-  idx,
   setCount,
   count,
   selectedCompanies,
@@ -30,7 +14,7 @@ const CompanyItem = ({
       setSelectedCompanies(filteredData);
       setCount(count - 1);
     } else {
-      setSelectedCompanies([...selectedCompanies, company]);
+      setSelectedCompanies([...selectedCompanies, value]);
       setCount(count + 1);
     }
   };
@@ -39,19 +23,20 @@ const CompanyItem = ({
       <div
         className='company-item'
         style={{
-          borderColor: `${!isSelected ? '#7b857e' : colors[idx]}`,
+          borderColor: `${!isSelected ? '#7b857e' : '#CCCCCC'}`,
         }}
       >
-        <h4>{`${company[0].toUpperCase()}${company.slice(1)}`}</h4>
+        <h4>{`${company.name[0].toUpperCase()}${company.name.slice(1)}`}</h4>
+        <img src={company.imageUrl} alt='' height={30} />
         <button
           type='button'
           className='select-btn mt-2'
           style={{
-            backgroundColor: `${!isSelected ? '#7b857e' : colors[idx]}`,
+            backgroundColor: `${!isSelected ? '#7b857e' : '#666967'}`,
           }}
           onClick={() => {
             setIsSelected(!isSelected);
-            handleSelection(company);
+            handleSelection(company.name);
           }}
           value='select'
         >
