@@ -1,0 +1,28 @@
+@import '../../../main.scss';
+
+.profile-container {
+  // overflow: auto;
+  height: 100%;
+  div {
+    background-color: #ffffff;
+    margin: 1rem 0;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    width: 70%;
+    padding: 2%;
+  }
+  button {
+    width: 70%;
+    align-self: center;
+    // height: 2rem;
+    &:focus {
+      box-shadow: none;
+    }
+    &.save-btn {
+      background-color: $btn-primary-bg;
+      color: #ffffff;
+      align-self: center;
+      font-weight: bolder;
+    }
+  }
+}

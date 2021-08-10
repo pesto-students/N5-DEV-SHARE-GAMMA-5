@@ -7,7 +7,17 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
+  const [userDetails, setUserDetails] = useState(null);
 
+  const fetchUserData = async () => {
+    const userData = await app
+      .firestore()
+      .collection('users')
+      .doc(currentUser.email)
+      .get();
+
+    setUserDetails(userData.data());
+  };
   useEffect(() => {
     const unsubscribe = app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -15,20 +25,37 @@ export const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
-
-  const loginUser = async (email, password) => {
+  useEffect(() => {
+    if (currentUser) {
+      fetchUserData();
+    }
+  }, [currentUser]);
+  const loginUser = (email, password) => {
     return app.auth().signInWithEmailAndPassword(email, password);
   };
 
-  const registerUser = async (workEmail, password) => {
+  const registerUser = (workEmail, password) => {
     return app.auth().createUserWithEmailAndPassword(workEmail, password);
   };
+
+  const logout = () => app.auth().signOut();
 
   if (pending) {
     return <Spinner />;
   }
+
   return (
-    <AuthContext.Provider value={{ currentUser, loginUser, registerUser }}>
+    <AuthContext.Provider
+      // eslint-disable-next-line
+      value={{
+        currentUser,
+        loginUser,
+        registerUser,
+        logout,
+        userDetails,
+        fetchUserData,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

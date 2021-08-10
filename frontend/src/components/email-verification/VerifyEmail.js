@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+// eslint-disable
+import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../../context/context';
 import './verifyemail.scss';
 import app from '../../firebase';
 
 const VerifyEmail = () => {
+  const { currentUser } = useContext(AuthContext);
   const [message, setMessage] = useState('');
   const resendEmail = async () => {
     try {
@@ -13,6 +17,9 @@ const VerifyEmail = () => {
     }
     setTimeout(() => setMessage(''), 3000);
   };
+  if (currentUser?.emailVerified) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <>
       <div className='verify-email-container'>
