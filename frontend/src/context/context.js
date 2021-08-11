@@ -38,7 +38,10 @@ export const AuthProvider = ({ children }) => {
     return app.auth().createUserWithEmailAndPassword(workEmail, password);
   };
 
-  const logout = () => app.auth().signOut();
+  const logout = () => {
+    app.auth().signOut();
+    window.location.href = '/';
+  };
 
   if (pending) {
     return <Spinner />;

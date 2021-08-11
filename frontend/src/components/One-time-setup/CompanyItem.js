@@ -27,7 +27,7 @@ const CompanyItem = ({
         }}
       >
         <h4>{`${company.name[0].toUpperCase()}${company.name.slice(1)}`}</h4>
-        <img src={company.imageUrl} alt='' height={30} />
+        <img src={company.imageUrl} alt='' height={40} />
         <button
           type='button'
           className='select-btn mt-2'

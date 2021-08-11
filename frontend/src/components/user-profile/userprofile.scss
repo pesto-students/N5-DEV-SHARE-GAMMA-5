@@ -70,9 +70,10 @@
     }
     .user-activity-container {
       border: none;
-      .question-1 {
-        min-height: 10vh;
-        width: 35vw;
+      width: 100%;
+      .question-item {
+        width: 100%;
+        padding: 5%;
       }
     }
     .skills-section {

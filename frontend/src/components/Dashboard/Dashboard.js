@@ -74,9 +74,7 @@ const Dashboard = () => {
       <div className='dashboard-details-container'>
         <div className='dashboard-menu'>
           <ul>
-            <li
-              onClick={() => setCategory('')}
-            >
+            <li onClick={() => setCategory('')}>
               <img src={topicsImg} alt='' />
               <span>All Topics</span>
             </li>

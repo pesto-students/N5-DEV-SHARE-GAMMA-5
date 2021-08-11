@@ -31,12 +31,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        .vote {
-          width: 30px;
-          height: 30px;
-          margin-left: -0.5rem;
-          cursor: pointer;
-        }
       }
       .add-answer {
         width: 100%;
@@ -51,6 +45,11 @@
           }
         }
       }
+    }
+    .not-found-container {
+      display: grid;
+      place-items: center;
+      height: 50%;
     }
   }
   .read-next-section {

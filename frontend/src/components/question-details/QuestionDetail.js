@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import app from '../../firebase';
 import Spinner from '../spinner/Spinner';
 import NotFound from '../Not-Found/NotFound';
+// import VoteItem from './votes/VoteItem';
 import './question-detail.scss';
 import userImg from '../../assets/user-1.png';
 import { AuthContext } from '../../context/context';
@@ -55,6 +56,7 @@ const QuestionDetail = (props) => {
       question_id: id,
       user: userDetails.nickName,
       id: uuidv4(),
+      question: questionDetails.question,
     });
     setAddAnswer('');
     setShowBtn(false);
@@ -82,38 +84,44 @@ const QuestionDetail = (props) => {
     <div className='questionDetail-container'>
       <div className='question-answer-section mb-3 bg-white'>
         <h5 className='question-title'>{questionDetails.question}</h5>
+        <span className='me-2'>#{questionDetails.company}</span>
+        <span>#{questionDetails.category}</span>
         <hr />
         <h6>Answers {`(${answers.length})`}</h6>
-        <div className='answer-section mt-3'>
-          <img src={userImg} alt='' className='me-2' />
-          <div className='add-answer'>
-            <form>
-              <textarea
-                className='form-control'
-                placeholder='Add your answer here...'
-                maxLength={300}
-                value={addAnswer}
-                onChange={(e) => setAddAnswer(e.target.value.trim())}
-                disabled={!currentUser}
-                onFocus={() => setShowBtn(true)}
-              />
-              <button
-                hidden={!showBtn}
-                type='submit'
-                className='btn mt-2 text-white'
-                onClick={(e) => submitAnswer(e)}
-              >
-                Submit
-              </button>
-            </form>
+        {userDetails && userDetails.company === questionDetails.company && (
+          <div className='answer-section mt-3'>
+            <img src={userImg} alt='' className='me-2' />
+            <div className='add-answer'>
+              <form>
+                <textarea
+                  className='form-control'
+                  placeholder='Add your answer here...'
+                  maxLength={300}
+                  value={addAnswer}
+                  onChange={(e) => setAddAnswer(e.target.value.trim())}
+                  disabled={
+                    !currentUser || userDetails.company !== questionDetails.company
+                  }
+                  onFocus={() => setShowBtn(true)}
+                />
+                <button
+                  hidden={!showBtn}
+                  type='submit'
+                  className='btn mt-2 text-white'
+                  onClick={(e) => submitAnswer(e)}
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        {/* eslint-disable-next-line */}
-        {answers &&
-          answers.map((answer) => (
+        )}
+        {answers
+          && answers.map((answer) => (
             <div className='answer-section mt-3'>
               <div className='image-section'>
                 <img src={userImg} alt='' className='me-2' />
+                {/* <VoteItem answerId={answer.id} /> */}
               </div>
               <div>
                 <Link to={`/user/${answer.user}`}>
@@ -126,6 +134,11 @@ const QuestionDetail = (props) => {
               </div>
             </div>
           ))}
+        {answers.length < 1 && (
+          <div className='not-found-container'>
+            <h5>No answers available</h5>
+          </div>
+        )}
       </div>
 
       <div className='read-next-section bg-white'>

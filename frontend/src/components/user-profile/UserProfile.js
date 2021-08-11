@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './userprofile.scss';
+import { Link } from 'react-router-dom';
 import profileImg from '../../assets/user-1.png';
 import app from '../../firebase';
 import NotFound from '../Not-Found/NotFound';
 import dateImg from '../../assets/date-img.png';
 import locationImg from '../../assets/location-img.png';
 import Spinner from '../spinner/Spinner';
+import { AuthContext } from '../../context/context';
 
 const UserProfile = (props) => {
+  const { currentUser } = useContext(AuthContext);
   // eslint-disable-next-line
   const user = props.match.params.nickName;
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
+  const [answers, setAnswers] = useState([]);
 
   const SkillsComponent = () => {
     const [skills, setSkills] = useState([]);
@@ -51,8 +55,24 @@ const UserProfile = (props) => {
       setLoading(!loading);
     }
   };
+
+  const fetchAnswers = async () => {
+    const result = [];
+    const data = await app
+      .firestore()
+      .collection('answers')
+      .where('user', '==', user)
+      .get();
+    if (data.docs) {
+      data.docs.forEach((doc) => {
+        result.push(doc.data());
+      });
+      setAnswers(result);
+    }
+  };
   useEffect(() => {
     fetchProfile();
+    fetchAnswers();
   }, []);
   if (!loading) {
     if (!profile) {
@@ -98,7 +118,7 @@ const UserProfile = (props) => {
             )}
           </ul>
           <hr />
-          {profile.isMentor && (
+          {profile.isMentor && currentUser && (
             <button type='button' className='btn mt-2'>
               Request Mentorship
             </button>
@@ -114,11 +134,17 @@ const UserProfile = (props) => {
           )}
 
           <div className='user-activity-container'>
-            <h5>Recent Activity</h5>
-            <div className='question-1' />
-            <div className='question-1' />
-            <div className='question-1' />
-            <div className='question-1' />
+            <h5>Recently Answered</h5>
+            {answers
+              && answers.map((answer) => (
+                <Link to={`/question/${answer.question_id}`}>
+                  <div className='question-item'>
+                    <h6>{answer.question}</h6>
+                    <span>#{profile.company}</span>
+                  </div>
+                </Link>
+              ))}
+              {answers.length < 1 && <h6 className='my-4 text-center p-4'>No activity Found</h6>}
           </div>
         </div>
       </div>
