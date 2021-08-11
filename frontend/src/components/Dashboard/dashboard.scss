@@ -4,22 +4,20 @@
   height: 80vh;
   background-color: $primary-body-bg;
   padding: 2% 3%;
+  overflow-y: scroll;
   .dashboard-details-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    height: 90%;
-    overflow: hidden;
-    width: 80%;
-    // border: 1px solid blue;
+    width: 70%;
     .dashboard-menu {
-      width: 40%;
+      max-height: 40vh;
+      width: 50%;
       ul {
-        height: 50%;
+        height: 80%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         padding: 0;
-        // border: 2px solid red;
         li {
           display: flex;
           align-items: center;
@@ -51,7 +49,17 @@
       }
     }
     .dashboard-user-feed {
-      //   border: 2px solid black;
+      a {
+        text-decoration: none;
+        color: unset;
+      }
+      .feed-item-container {
+        background: #ffffff;
+        border-radius: 5px;
+        padding: 2% 5%;
+        width: 80%;
+        cursor: pointer;
+      }
     }
   }
 }

@@ -38,7 +38,10 @@ export const AuthProvider = ({ children }) => {
     return app.auth().createUserWithEmailAndPassword(workEmail, password);
   };
 
-  const logout = () => app.auth().signOut();
+  const logout = () => {
+    app.auth().signOut();
+    window.location.href = '/';
+  };
 
   if (pending) {
     return <Spinner />;
@@ -46,7 +49,6 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      // eslint-disable-next-line
       value={{
         currentUser,
         loginUser,

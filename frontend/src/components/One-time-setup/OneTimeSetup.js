@@ -18,7 +18,7 @@ const OneTimeSetup = () => {
   const fetchCompanies = async () => {
     const results = await app.firestore().collection('companies').get();
     const selections = [];
-    results.docs.forEach((doc) => selections.push(doc.id));
+    results.docs.forEach((doc) => selections.push(doc.data()));
     setCompanies(selections);
   };
   const fetchInterests = async () => {

@@ -1,16 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './userprofile.scss';
+import { Link } from 'react-router-dom';
 import profileImg from '../../assets/user-1.png';
 import app from '../../firebase';
 import NotFound from '../Not-Found/NotFound';
 import dateImg from '../../assets/date-img.png';
 import locationImg from '../../assets/location-img.png';
+import Spinner from '../spinner/Spinner';
+import { AuthContext } from '../../context/context';
 
 const UserProfile = (props) => {
+  const { currentUser } = useContext(AuthContext);
   // eslint-disable-next-line
   const user = props.match.params.nickName;
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
+  const [answers, setAnswers] = useState([]);
+
+  const SkillsComponent = () => {
+    const [skills, setSkills] = useState([]);
+    const splitSkills = () => {
+      if (profile) {
+        const result = [];
+        profile.profileDetails.skills
+          .split(',')
+          .forEach((skill) => result.push(skill));
+        setSkills(result);
+      }
+    };
+    useEffect(() => splitSkills(), {});
+    if (skills) {
+      return (
+        <div className='skills-section'>
+          {skills.map((skill) => (
+            <p>{skill}</p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
   const fetchProfile = async () => {
     let userProfile;
     const data = await app
@@ -26,8 +55,24 @@ const UserProfile = (props) => {
       setLoading(!loading);
     }
   };
+
+  const fetchAnswers = async () => {
+    const result = [];
+    const data = await app
+      .firestore()
+      .collection('answers')
+      .where('user', '==', user)
+      .get();
+    if (data.docs) {
+      data.docs.forEach((doc) => {
+        result.push(doc.data());
+      });
+      setAnswers(result);
+    }
+  };
   useEffect(() => {
     fetchProfile();
+    fetchAnswers();
   }, []);
   if (!loading) {
     if (!profile) {
@@ -51,29 +96,61 @@ const UserProfile = (props) => {
               <h6>{profile.createdAt.toDate().toDateString()}</h6>
             </li>
           </ul>
-          <button type='button' className='btn mt-2'>
-            Request Mentorship
-          </button>
+          <hr />
+          <ul className='work-education-details'>
+            <li>
+              <h6 className='text-center'>Work</h6>
+              <h6>
+                <span>
+                  {profile.profileDetails.jobTitle
+                    ? `${profile.profileDetails.jobTitle} @`
+                    : ''}
+                </span>{' '}
+                {profile.company}
+              </h6>
+            </li>
+
+            {profile.profileDetails.education && (
+              <li>
+                <h6 className='text-center'>Education</h6>
+                <h6>{profile.profileDetails.education}</h6>
+              </li>
+            )}
+          </ul>
+          <hr />
+          {profile.isMentor && currentUser && (
+            <button type='button' className='btn mt-2'>
+              Request Mentorship
+            </button>
+          )}
         </div>
         <div className='profile-additionals-container'>
-          <div className='skills-container'>
-            <h6>Skills/Languages</h6>
-            <hr />
-            <p>ReactJs</p>
-            <p>NodeJs</p>
-            <p>NextJs</p>
-            <p>DevOps</p>
-          </div>
+          {profile.profileDetails.skills && (
+            <div className='skills-container'>
+              <h6 className='mt-3 me-4'>Skills/Languages</h6>
+              <hr />
+              <SkillsComponent />
+            </div>
+          )}
+
           <div className='user-activity-container'>
-            <h5>Recent Activity</h5>
-            <div className='question-1' />
-            <div className='question-1' />
+            <h5>Recently Answered</h5>
+            {answers
+              && answers.map((answer) => (
+                <Link to={`/question/${answer.question_id}`}>
+                  <div className='question-item'>
+                    <h6>{answer.question}</h6>
+                    <span>#{profile.company}</span>
+                  </div>
+                </Link>
+              ))}
+              {answers.length < 1 && <h6 className='my-4 text-center p-4'>No activity Found</h6>}
           </div>
         </div>
       </div>
     );
   }
-  return null;
+  return <Spinner />;
 };
 
 export default UserProfile;

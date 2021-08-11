@@ -1,7 +1,7 @@
 @import '../../main.scss';
 
 .settings-container {
-  height: 80vh;
+  height: 95vh;
   background-color: $primary-body-bg;
   padding: 2% 5%;
   .title {
@@ -43,6 +43,12 @@
     }
     .settings-details {
       overflow-y: auto;
+      .settings-loader {
+        display: grid;
+        place-items: center;
+        width: 50%;
+        height: 80%;
+      }
     }
   }
 }

@@ -55,7 +55,7 @@ const SignUp = () => {
     }
     const doesnickNameNameExists = await checkIfNickNameExists(nickName);
     if (doesnickNameNameExists.exists) {
-      setError('nickName already exists!');
+      setError('Nickname already exists!');
       return;
     }
     setFormValidation({
@@ -127,6 +127,7 @@ const SignUp = () => {
           interests: [],
           isWorkEmailVerified: false,
           isOneTimeSetupCompleted: false,
+          isMentor: false,
           createdAt: new Date(),
           company: getCompanyNameFromEmail(workEmail),
           profileDetails: {
