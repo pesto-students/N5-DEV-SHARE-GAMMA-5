@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 var mailservice=require('../services/mailservice');
 router.get('/', function(req, res, next) {
-  return res.status(200).json({ message: 'Welcome to Express API template' });
+  return res.status(200).json({ message: 'home page' });
 });
 
 router.get('/verifymail/:email', function(req, res, next) {
