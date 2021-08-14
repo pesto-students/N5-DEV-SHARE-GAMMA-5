@@ -3,6 +3,7 @@
 'use strict';
 
 var express = require('express');
+const db = require('../services/firebaseconnector');
 var router = express.Router();
 var mailservice=require('../services/mailservice');
 router.get('/', function(req, res, next) {
@@ -22,6 +23,29 @@ router.get('/verifymail/:email', function(req, res, next) {
 
 router.get('/confirmation/:email/:token', function(req, res, next) {
   return res.status(200).send('A verification of your email ' + req.params.email + ' is successful');
+});
+
+router.get('/company/search/:id', function(req, res, next) {
+  let search_text=req.params.id;
+
+  if(!search_text )
+        sendResponse(res,{error:"search text is required"},400);
+ 
+  db.collection("companies").get()
+  .then((querySnapshot) => {
+      //console.log("Document written with ID: ", docRef.id);
+      let array=[];
+      querySnapshot.forEach((doc) => {
+        array.push({"name":doc.id});
+      });
+
+      return res.status(200).json(array.filter((c)=> {return c.name.includes(search_text) }));
+  })
+  .catch((error) => {
+      //console.error("Error adding document: ", error);
+      return res.status(500).json({ message: 'Error',error:error });
+  });
+  
 });
 
 
