@@ -9,13 +9,13 @@
   overflow: auto;
   .company-details-container {
     background: #ffffff;
-    width: 80%;
+    width: 90%;
     border-radius: 5px;
   }
   .header-container {
     border-radius: 5px;
     .banner-section {
-      height: 15vh;
+      height: 20vh;
       border-radius: 5px 5px 0 0;
     }
     .logo-section {
@@ -56,6 +56,19 @@
     }
     .questions-container {
       // border-right: 1px solid #cccccc;
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .company-container {
+    padding: 0;
+  }
+  .company-details-container {
+    width: 100% !important;
+    .company-body {
+      grid-template-columns: auto;
+      padding: 0 0% 15% 0%;
     }
   }
 }

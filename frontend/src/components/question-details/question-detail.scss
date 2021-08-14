@@ -1,6 +1,7 @@
 @import '../../main.scss';
 .questionDetail-container {
   height: 80vh;
+  position: relative;
   overflow-y: auto;
   padding: 2% 5%;
   background: $primary-body-bg;
@@ -53,18 +54,41 @@
     }
   }
   .read-next-section {
-    max-height: 40vh;
+    height: 40vh;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    padding: 2% 0 0 2%;
-    width: 80%;
+    padding: 5%;
+    // width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     .title {
       font-weight: bold;
     }
     .related-question {
       cursor: pointer;
+      h6 {
+        color: #2e2d2d;
+        &:hover {
+          color: $btn-primary-bg;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  .read-next-section {
+    height: 50vh !important;
+  }
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .questionDetail-container {
+    display: flex;
+    flex-direction: column;
+    .not-found-container {
+      display: block !important;
+      margin: 2%;
     }
   }
 }

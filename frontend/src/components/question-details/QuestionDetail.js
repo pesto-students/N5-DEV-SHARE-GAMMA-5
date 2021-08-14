@@ -88,7 +88,6 @@ const QuestionDetail = (props) => {
         <span>#{questionDetails.category}</span>
         <hr />
         <h6>Answers {`(${answers.length})`}</h6>
-        {userDetails && userDetails.company === questionDetails.company && (
           <div className='answer-section mt-3'>
             <img src={userImg} alt='' className='me-2' />
             <div className='add-answer'>
@@ -98,10 +97,8 @@ const QuestionDetail = (props) => {
                   placeholder='Add your answer here...'
                   maxLength={300}
                   value={addAnswer}
-                  onChange={(e) => setAddAnswer(e.target.value.trim())}
-                  disabled={
-                    !currentUser || userDetails.company !== questionDetails.company
-                  }
+                  onChange={(e) => setAddAnswer(e.target.value)}
+                  disabled={!currentUser}
                   onFocus={() => setShowBtn(true)}
                 />
                 <button
@@ -115,7 +112,6 @@ const QuestionDetail = (props) => {
               </form>
             </div>
           </div>
-        )}
         {answers
           && answers.map((answer) => (
             <div className='answer-section mt-3'>

@@ -7,6 +7,7 @@ import NotFound from '../Not-Found/NotFound';
 import dateImg from '../../assets/date-img.png';
 import locationImg from '../../assets/location-img.png';
 import Spinner from '../spinner/Spinner';
+// import RequirementModal from '../modals/requirement/RequirementModal';
 import { AuthContext } from '../../context/context';
 
 const UserProfile = (props) => {
@@ -79,7 +80,9 @@ const UserProfile = (props) => {
       return <NotFound title='User Not Found' />;
     }
     return (
+      <>
       <div className='profile-container'>
+      {/* <RequirementModal /> */}
         <div className='background-container' />
         <div className='profile-details-container'>
           <img src={profileImg} alt='' className='profile-img' />
@@ -99,7 +102,7 @@ const UserProfile = (props) => {
           <hr />
           <ul className='work-education-details'>
             <li>
-              <h6 className='text-center'>Work</h6>
+              <h6 className='text-center title'>Work</h6>
               <h6>
                 <span>
                   {profile.profileDetails.jobTitle
@@ -112,14 +115,14 @@ const UserProfile = (props) => {
 
             {profile.profileDetails.education && (
               <li>
-                <h6 className='text-center'>Education</h6>
+                <h6 className='text-center title'>Education</h6>
                 <h6>{profile.profileDetails.education}</h6>
               </li>
             )}
           </ul>
           <hr />
-          {profile.isMentor && currentUser && (
-            <button type='button' className='btn mt-2'>
+          {profile.isMentor && currentUser && currentUser.email !== profile.workEmail && (
+            <button type='button' className='btn mt-2' data-bs-target='#requirementModal' data-bs-toggle='modal'>
               Request Mentorship
             </button>
           )}
@@ -127,7 +130,7 @@ const UserProfile = (props) => {
         <div className='profile-additionals-container'>
           {profile.profileDetails.skills && (
             <div className='skills-container'>
-              <h6 className='mt-3 me-4'>Skills/Languages</h6>
+              <h6 className='mt-3 text-center'>Skills</h6>
               <hr />
               <SkillsComponent />
             </div>
@@ -148,6 +151,7 @@ const UserProfile = (props) => {
           </div>
         </div>
       </div>
+      </>
     );
   }
   return <Spinner />;

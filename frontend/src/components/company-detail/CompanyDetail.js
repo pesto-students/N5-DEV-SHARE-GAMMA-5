@@ -7,25 +7,10 @@ import { AuthContext } from '../../context/context';
 import Spinner from '../spinner/Spinner';
 import QuestionItem from './questions/QuestionItem';
 import Employees from './employees/Employees';
-// import dummyData from '../../utils/dummyUserData.json';
 
 const CompanyDetail = (props) => {
   // eslint-disable-next-line
   const { userDetails, fetchUserData, currentUser } = useContext(AuthContext);
-  // const loadDummyData = async () => {
-  //   dummyData.forEach((obj) => {
-  //     app.firestore().collection('questions').doc(obj.id).set(obj);
-  //   });
-  // };
-  // const loadDummyData = async () => {
-  //   dummyData.forEach((obj) => {
-  //     app
-  //       .firestore()
-  //       .collection('users')
-  //       .doc()
-  //       .set({ ...obj, createdAt: new Date() });
-  //   });
-  // };
   // eslint-disable-next-line
   const companyName = props.match.params.company;
   const [company, setCompany] = useState(null);
@@ -71,7 +56,6 @@ const CompanyDetail = (props) => {
 
   useEffect(() => {
     fetchCompany();
-    // loadDummyData();
   }, []);
   useEffect(() => {
     if (userDetails) {
@@ -101,19 +85,22 @@ const CompanyDetail = (props) => {
           <h5 className='company-name mt-4'>
             {`${company.name[0].toUpperCase()}${company.name.slice(1)}`}
           </h5>
-          <div className='follow-btn mb-1'>
-            <button
-              className='btn btn-sm w-30'
-              type='button'
-              onClick={() => handleFollowBtn(companyName)}
-            >
-              {!interests.includes(companyName) && (
-                <i className='fas fa-plus' />
-              )}
+          {currentUser && (
+            <div className='follow-btn mb-1'>
+              <button
+                className='btn btn-sm w-30'
+                type='button'
+                onClick={() => handleFollowBtn(companyName)}
+              >
+                {!interests.includes(companyName) && (
+                  <i className='fas fa-plus' />
+                )}
 
-              {interests.includes(companyName) ? 'Unfollow' : ' Follow'}
-            </button>
-          </div>
+                {interests.includes(companyName) ? 'Unfollow' : ' Follow'}
+              </button>
+            </div>
+          )}
+
           <hr />
         </div>
         <div className='company-body'>

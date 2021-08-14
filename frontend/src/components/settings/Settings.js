@@ -3,7 +3,7 @@ import './settings.scss';
 import { AuthContext } from '../../context/context';
 import profileImg from '../../assets/smiley.png';
 import accountImg from '../../assets/account.png';
-import notificationImg from '../../assets/notifications.png';
+// import notificationImg from '../../assets/notifications.png';
 import Profile from './profile/Profile';
 import Account from './account/Account';
 import Notification from './notification/Notification';
@@ -66,7 +66,7 @@ const Settings = () => {
                   <img src={accountImg} alt='' />
                   <span>Account</span>
                 </li>
-                <li
+                {/* <li
                   onClick={() => setComponent('notification')}
                   style={{
                     backgroundColor: component === 'notification' && '#FFFFFF',
@@ -74,7 +74,7 @@ const Settings = () => {
                 >
                   <img src={notificationImg} alt='' />
                   <span>Notifications</span>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className='settings-details'>
