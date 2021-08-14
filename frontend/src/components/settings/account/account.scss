@@ -34,3 +34,11 @@
     }
   }
 }
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .account-container {
+    .account-section {
+      width: 100%;
+    }
+  }
+}

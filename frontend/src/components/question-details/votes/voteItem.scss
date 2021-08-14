@@ -5,7 +5,9 @@
   flex-direction: column;
   align-items: center;
   margin-left: -0.5rem;
-  .vote {
+  img {
     cursor: pointer;
+    height: 20px !important;
+    width: 20px !important;
   }
 }
