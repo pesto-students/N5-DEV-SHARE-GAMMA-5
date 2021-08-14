@@ -22,26 +22,26 @@ const ForgotPassword = ({ setError }) => {
   return (
     <div>
       <div
-        class='modal fade modal-container'
+        className='modal fade modal-container w-80'
         id='exampleModal'
         tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
-        <div class='modal-dialog'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title' id='exampleModalLabel'>
+        <div className='modal-dialog'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h5 className='modal-title' id='exampleModalLabel'>
                 Enter your work email
               </h5>
               <button
                 type='button'
-                class='btn-close'
+                className='btn-close'
                 data-bs-dismiss='modal'
                 aria-label='Close'
               ></button>
             </div>
-            <div class='modal-body mt-2'>
+            <div className='modal-body mt-2'>
               <input
                 type='text'
                 className='form-control'
@@ -52,10 +52,10 @@ const ForgotPassword = ({ setError }) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div class='modal-footer'>
+            <div className='modal-footer'>
               <button
                 type='button'
-                class='btn btn-sm my-2 login-btn'
+                className='btn btn-sm my-2 login-btn'
                 onClick={(e) => handleSubmit(e)}
               >
                 Submit

@@ -24,3 +24,11 @@
     }
   }
 }
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .profile-container {
+    div, button {
+      width: 90%;
+    }
+  }
+}

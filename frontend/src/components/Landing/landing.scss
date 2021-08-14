@@ -24,7 +24,7 @@ body {
     }
     .login-section {
       width: 70%;
-      
+
       h1 {
         color: $muted-text-color;
         font-weight: bolder;
@@ -66,6 +66,19 @@ body {
           font-weight: bolder;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 990px) and (min-width: 300px) {
+  .img-section {
+    display: none;
+  }
+  .login-section {
+    width: 100% !important;
+    margin-top: -2rem;
+    form {
+      width: 100% !important;
     }
   }
 }

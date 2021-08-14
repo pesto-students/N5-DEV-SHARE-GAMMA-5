@@ -85,18 +85,47 @@
     }
   }
 }
-::-webkit-scrollbar {
-  width: 10px;
-}
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   box-shadow: inset 0 0 5px grey;
+//   border-radius: 10px;
+// }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $btn-primary-bg;
-  border-radius: 10px;
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: $btn-primary-bg;
+//   border-radius: 10px;
+// }
+
+@media (min-width: 300px) and (max-width: 900px) {
+  .profile-details-container {
+    width: 100% !important;
+    .basic-details {
+      width: 100% !important;
+    }
+    .work-education-details {
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+      height: 100%;
+      .title {
+        font-weight: bolder;
+      }
+    }
+  }
+  .profile-additionals-container {
+    width: 100% !important;
+    padding: 2% !important;
+    .skills-container {
+      height: 40vh !important;
+      width: 100% !important;
+      .skills-section {
+        height: 40vh !important;
+      }
+    }
+  }
 }

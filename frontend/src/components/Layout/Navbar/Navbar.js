@@ -31,9 +31,10 @@ const Navbar = ({ isSignUpPage }) => {
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <form className='d-flex mx-auto col-sm-8 col-lg-5'>
               <input
-                className='form-control me-2 search-box'
+                className={`form-control search-box ${authContext &&
+                  !authContext.currentUser && 'unauthorised'}`}
                 type='search'
-                placeholder='Search for questions, users and companies'
+                placeholder='Search for questions, companies...'
                 aria-label='Search'
                 style={{ marginLeft: !app.auth().currentUser && '-4rem' }}
               />
@@ -53,7 +54,7 @@ const Navbar = ({ isSignUpPage }) => {
                         className='btn btn-sm ask-btn'
                         aria-current='page'
                       >
-                        <i className='fas fa-comment-alt'></i>
+                        <i className='fas fa-comment-alt ask-icon'></i>
                         <span>Ask</span>
                       </button>
                     </li>
@@ -81,6 +82,63 @@ const Navbar = ({ isSignUpPage }) => {
                         onClick={() => authContext.logout()}
                       >
                         Logout
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              )}
+            </ul>
+            <ul className='navbar-nav me-auto mb-2 mb-lg-0 nav-items nav-responsive'>
+              {authContext &&
+                authContext.currentUser &&
+                authContext.currentUser.emailVerified && (
+                  <>
+                    <li
+                      className='nav-item'
+                      data-bs-toggle='modal'
+                      data-bs-target='#questionModal'
+                    >
+                      <button
+                        className='btn btn-sm ask-btn'
+                        aria-current='page'
+                      >
+                        <i className='fas fa-comment-alt ask-icon'></i>
+                        <span>Ask</span>
+                      </button>
+                    </li>
+                    <li className='nav-item mx-3'>
+                      <button
+                        className='btn btn-sm ask-btn bg-light text-dark'
+                        aria-current='page'
+                      >
+                        <span>Notifications</span>
+                      </button>
+                    </li>
+                  </>
+                )}
+              {authContext && authContext.currentUser && (
+                <li class='nav-item'>
+                  <ul>
+                    {authContext &&
+                      authContext.currentUser &&
+                      authContext.currentUser.emailVerified && (
+                        <li>
+                          <Link to='/settings'>
+                            <button
+                              className='btn btn-sm ask-btn bg-light text-dark settings'
+                              aria-current='page'
+                            >
+                              <span>Settings</span>
+                            </button>
+                          </Link>
+                        </li>
+                      )}
+                    <li>
+                      <a
+                        class='btn btn-sm ask-btn ask-btn bg-light text-dark settings'
+                        onClick={() => authContext.logout()}
+                      >
+                        <h6>Logout</h6>
                       </a>
                     </li>
                   </ul>
