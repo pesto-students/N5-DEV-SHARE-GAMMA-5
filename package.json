@@ -5,7 +5,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "start":"lerna run start",
-    "lint":"lerna run lint"
+    "start": "lerna run start",
+    "lint": "lerna run lint"
   }
 }
