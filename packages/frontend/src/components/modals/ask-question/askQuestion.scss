@@ -1,9 +1,25 @@
 @import '../../../main.scss';
 
+// body{
+//   ::-webkit-scrollbar {
+//     width: 10px;
+//   }
+//   /* Track */
+//   ::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 5px grey;
+//     border-radius: 10px;
+//   }
+
+//   /* Handle */
+//   ::-webkit-scrollbar-thumb {
+//     background: $btn-primary-bg;
+//     border-radius: 10px;
+//   }
+// }
 .modal-dialog {
   min-width: 500px;
   margin-top: 5rem;
-  box-shadow: 4px 4px  $btn-primary-bg;
+  box-shadow: 4px 4px $btn-primary-bg;
   .close-btn {
     cursor: pointer;
     padding: 5px 5px 0 0;
@@ -30,6 +46,11 @@
   }
   .form-select:focus {
     box-shadow: 2px 2px $btn-primary-bg;
+  }
+  .search-data {
+    max-height: 200px !important;
+    overflow: auto;
+    
   }
 }
 

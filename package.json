@@ -1,0 +1,12 @@
+{
+  "name": "devshare",
+  "private": true,
+  "version": "1.0.0",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start":"lerna run start",
+    "lint":"lerna run lint"
+  }
+}
