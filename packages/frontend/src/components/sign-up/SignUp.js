@@ -136,6 +136,8 @@ const SignUp = () => {
             education: '',
             skills: '',
           },
+          upVote: [],
+          downVote: [],
         });
       setLoading(false);
       history.push('/verify');

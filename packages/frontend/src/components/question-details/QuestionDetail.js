@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import app from '../../firebase';
 import Spinner from '../spinner/Spinner';
 import NotFound from '../Not-Found/NotFound';
-// import VoteItem from './votes/VoteItem';
+import VoteItem from './votes/VoteItem';
 import './question-detail.scss';
 import userImg from '../../assets/user-1.png';
 import { AuthContext } from '../../context/context';
@@ -57,6 +57,8 @@ const QuestionDetail = (props) => {
       user: userDetails.nickName,
       id: uuidv4(),
       question: questionDetails.question,
+      voteCount: 0,
+      company: userDetails.company,
     });
     setAddAnswer('');
     setShowBtn(false);
@@ -88,36 +90,36 @@ const QuestionDetail = (props) => {
         <span>#{questionDetails.category}</span>
         <hr />
         <h6>Answers {`(${answers.length})`}</h6>
-          <div className='answer-section mt-3'>
-            <img src={userImg} alt='' className='me-2' />
-            <div className='add-answer'>
-              <form>
-                <textarea
-                  className='form-control'
-                  placeholder='Add your answer here...'
-                  maxLength={300}
-                  value={addAnswer}
-                  onChange={(e) => setAddAnswer(e.target.value)}
-                  disabled={!currentUser}
-                  onFocus={() => setShowBtn(true)}
-                />
-                <button
-                  hidden={!showBtn}
-                  type='submit'
-                  className='btn mt-2 text-white'
-                  onClick={(e) => submitAnswer(e)}
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
+        <div className='answer-section mt-3'>
+          <img src={userImg} alt='' className='me-2' />
+          <div className='add-answer'>
+            <form>
+              <textarea
+                className='form-control'
+                placeholder='Add your answer here...'
+                maxLength={300}
+                value={addAnswer}
+                onChange={(e) => setAddAnswer(e.target.value)}
+                disabled={!currentUser}
+                onFocus={() => setShowBtn(true)}
+              />
+              <button
+                hidden={!showBtn}
+                type='submit'
+                className='btn mt-2 text-white'
+                onClick={(e) => submitAnswer(e)}
+              >
+                Submit
+              </button>
+            </form>
           </div>
+        </div>
         {answers
           && answers.map((answer) => (
             <div className='answer-section mt-3'>
               <div className='image-section'>
                 <img src={userImg} alt='' className='me-2' />
-                {/* <VoteItem answerId={answer.id} /> */}
+                <VoteItem answerId={answer.id} answer={answer} />
               </div>
               <div>
                 <Link to={`/user/${answer.user}`}>
@@ -126,6 +128,12 @@ const QuestionDetail = (props) => {
                 <span className='ms-2'>
                   | {answer.created_at.toDate().toDateString()}
                 </span>
+                {(questionDetails.company === answer.company) && (
+                  <span className='ms-2'>
+                    (Answered by {questionDetails.company} employee)
+                  </span>
+                )}
+
                 <p className='mt-2'>{answer.answer}</p>
               </div>
             </div>
