@@ -6,15 +6,24 @@ var express = require('express');
 const db = require('../services/firebaseconnector');
 const { formatedDate, sendResponse } = require('../services/helper');
 var router = express.Router();
+
 router.post('/', function (req, res, next) {
-    let { category, question, company, id } = req.body;
-    if (!category || !company || !question || !id)
+  //  return sendResponse( res,req.body,200);
+  let { category, question, company, id,option1,option2,option3,option4 } = req.body;
+    if (!category || !company || !question || !id  || !option1 || !option2)
       sendResponse(
         res,
-        { error: 'Id,Category,question and company are required' },
+        { error: 'Id, Category, Question, 2 options and company are required' },
         400
-      );
-    db.collection('questions')
+    );
+    
+    if(!option3){
+      option3="";
+    }
+    if(!option4){
+      option4="";
+    }
+    db.collection('polls')
       .doc(id)
       .set({
         category: category,
@@ -22,14 +31,18 @@ router.post('/', function (req, res, next) {
         created_at: formatedDate(new Date(), 'DD/MM/YYYY'),
         question: question,
         id,
+        option1,
+        option2,
+        option3,
+        option4
       })
       .then((docRef) => {
-        return res.status(200).json({ message: 'Add Question success' });
+        return res.status(200).json({ message: 'Add Poll success' });
       })
       .catch((error) => {
         return res
           .status(500)
-          .json({ message: 'Add Question error', error: error });
+          .json({ message: 'Add Poll error', error: error });
       });
 });
 
@@ -44,22 +57,25 @@ router.put('/:id', function(req, res, next) {
   else if(!category || !company || !question)
         sendResponse(res,{error:"Category,question and company are required"},400);
   // sendResponse(res,req.body,200);
-  let date=db.collection("questions").doc(id).created_at;
-  db.collection("questions").doc(id).set({
+  let date=db.collection("polls").doc(id).created_at;
+  db.collection("polls").doc(id).set({
       category: category,
       company: company,
-      created_at: formatedDate(date!=null?new Date(date):new Date(),"DD/MM/yyyy"),
-
-      updated_at: formatedDate(new Date(),"DD/MM/yyyy"),
-      question:question
+      created_at: formatedDate(date!=null?new Date(date):new Date(),"DD/MM/YYYY"),
+      updated_at: formatedDate(new Date(),"DD/MM/YYYY"),
+      question:question,
+      option1,
+      option2,
+      option3,
+      option4
   })
   .then((docRef) => {
   //console.log("Document written with ID: ", docRef.id);
-      return res.status(200).json({ message: 'Update Question success ' });
+      return res.status(200).json({ message: 'Update Poll success ' });
   })
   .catch((error) => {
       //console.error("Error adding document: ", error);
-      return res.status(500).json({ message: 'Update Question error',error:JSON.stringify(error) });
+      return res.status(500).json({ message: 'Update Poll error',error:JSON.stringify(error) });
   });
   
 });
