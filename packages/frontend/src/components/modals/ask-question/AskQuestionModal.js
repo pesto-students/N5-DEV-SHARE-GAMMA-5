@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 import './askQuestion.scss';
 import closeBtn from '../../../assets/close-btn.png';
 import ModalButtons from './ModalButtons';
@@ -11,11 +12,40 @@ const AskQuestionModal = () => {
   const [pollOptionOne, setPollOptionOne] = useState('');
   const [pollOptionTwo, setPollOptionTwo] = useState('');
   const [selection, setSelection] = useState('question');
+  const [searchData, setSearchData] = useState([]);
+
+  const debounce = (func, timeout = 3000) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
+  };
+
+  const handleSearch = async () => {
+    if (company.length > 0) {
+      const data = await axios.get(`/company/search/${company}`);
+      setSearchData(data.data);
+    } else {
+      setSearchData([]);
+    }
+  };
+
   useEffect(() => {
     setCompany('');
     setCategory('');
     setQuestion('');
   }, [selection]);
+
+  useEffect(() => {
+    if (company.length > 0) {
+      debounce(handleSearch());
+    } else {
+      setSearchData([]);
+    }
+  }, [company]);
   if (selection === 'question') {
     return (
       <div>
@@ -44,8 +74,16 @@ const AskQuestionModal = () => {
                   className='form-control mb-3'
                   placeholder='Search for a company'
                   value={company}
-                  onChange={(e) => setCompany(e.target.value)}
+                  onChange={(e) => {
+                    setCompany(e.target.value.trim());
+                  }}
                 />
+                <ul className='list-group search-data'>
+                  {searchData
+                    && searchData.map((item) => (
+                      <li className='list-group-item'>{item.name}</li>
+                    ))}
+                </ul>
                 <div className='w-100'>
                   <select
                     className='form-select select-container'
