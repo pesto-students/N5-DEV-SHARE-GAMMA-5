@@ -14,5 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: cd frontend && npm install
-      - run: cd frontend && npm run lint
+      - run: npm install
+      - run: npm run lint
