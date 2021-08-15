@@ -12,8 +12,10 @@ const Footer = () => {
       <p>
         <strong>DEV Community</strong> – A constructive and inclusive social
         network for software developers. With you every step of your journey.
+        <br />
+        <strong>DEV Community © 2021 - 2025</strong>
       </p>
-      <strong>DEV Community © 2021 - 2025</strong>;
+      ;
     </div>
   );
 };
