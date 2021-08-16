@@ -1,9 +1,11 @@
 @import '../../main.scss';
 
+
+
 .dashboard-container {
   height: 80vh;
   background-color: $primary-body-bg;
-  padding: 2% 3%;
+  padding: 30px 20px;
   overflow-y: scroll;
   .up-arrow {
     position: absolute;
@@ -30,6 +32,10 @@
           border-radius: 5px;
           padding: 1%;
           &:hover {
+            background-color: #e2e4e6;
+            color: $focus-primary-color;
+          }
+          &:active {
             background-color: #e2e4e6;
             color: $focus-primary-color;
           }
@@ -62,8 +68,8 @@
       .feed-item-container {
         background: #ffffff;
         border-radius: 5px;
-        padding: 2% 5%;
-        width: 80%;
+        padding: 2% 2%;
+        width: 100%;
         cursor: pointer;
       }
     }
@@ -81,9 +87,23 @@
         border-radius: 5px 5px 0 0;
       }
       .company-item {
-        padding: 5%;
+        padding: 4px;
         display: flex;
         background: #ffffff;
+        align-items: center;
+        flex-direction: row;
+        h6{
+          margin: 0;
+          font-weight: 500;
+        }
+        img{
+          width: 30px;
+          padding: 2px;
+          border-radius: 10%;
+          margin: 4px;
+          object-fit: fill;
+          border: 1px solid rgba(128, 128, 128, 0.342);
+        }
       }
     }
   }
@@ -163,4 +183,36 @@
       }
     }
   }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.dashboard-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.dashboard-container{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.catBadge{ display: inline-block;
+   padding: 4px; margin-left: -2%; }
+.compill{
+  border-radius: 12px;
+  // border: 1px solid gray;
+  background-color: #e2e4e6;
+  padding: 6px;
+}
+h4::first-letter {
+  text-transform: capitalize;
+}
+.answers{
+  h6{
+    margin-top: 10px;
+    color: #8a8a8a;
+    font-weight: bold;
+  }
+}
+h6::first-letter {
+  text-transform: capitalize;
 }

@@ -11,11 +11,12 @@ const Navbar = ({ isSignUpPage }) => {
   const authContext = useContext(AuthContext);
   return (
     <>
+    
       <AskQuestionModal />
       <nav className='navbar navbar-expand-lg navbar-light px-5'>
-        <div className='container-fluid'>
+        <div className='container'>
           <Link to='/' className={`logo ${isSignUpPage && 'mx-auto'}`}>
-            <img src={logo} alt='' />
+            <img src={logo} alt='' style={{height:'35px',margin:'8px'}} />
           </Link>
           <button
             className='navbar-toggler'
@@ -29,7 +30,7 @@ const Navbar = ({ isSignUpPage }) => {
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <form className='d-flex mx-auto col-sm-8 col-lg-5'>
+            <form className='d-flex mx-auto col-sm-8 col-lg-8'>
               <input
                 className={`form-control search-box ${authContext &&
                   !authContext.currentUser && 'unauthorised'}`}
@@ -51,11 +52,11 @@ const Navbar = ({ isSignUpPage }) => {
                       data-bs-target='#questionModal'
                     >
                       <button
-                        className='btn btn-sm ask-btn'
+                        className='btn btn-primary'
                         aria-current='page'
                       >
                         <i className='fas fa-comment-alt ask-icon'></i>
-                        <span>Ask</span>
+                        <span> Ask question</span>
                       </button>
                     </li>
                     <li className='nav-item mx-3'>
@@ -64,21 +65,21 @@ const Navbar = ({ isSignUpPage }) => {
                   </>
                 )}
               {authContext && authContext.currentUser && (
-                <li class='nav-item dropdown'>
+                <li className='nav-item dropdown'>
                   <img className='profile ' src={profileImg} alt='' />
-                  <ul class='dropdown-menu'>
+                  <ul className='dropdown-menu'>
                     {authContext &&
                       authContext.currentUser &&
                       authContext.currentUser.emailVerified && (
                         <li>
-                          <Link to='/settings' class='dropdown-item'>
+                          <Link to='/settings' className='dropdown-item'>
                             Settings
                           </Link>
                         </li>
                       )}
                     <li>
                       <a
-                        class='dropdown-item'
+                        className='dropdown-item'
                         onClick={() => authContext.logout()}
                       >
                         Logout
@@ -103,7 +104,7 @@ const Navbar = ({ isSignUpPage }) => {
                         aria-current='page'
                       >
                         <i className='fas fa-comment-alt ask-icon'></i>
-                        <span>Ask</span>
+                        <span>Ask question</span>
                       </button>
                     </li>
                     <li className='nav-item mx-3'>
@@ -117,7 +118,7 @@ const Navbar = ({ isSignUpPage }) => {
                   </>
                 )}
               {authContext && authContext.currentUser && (
-                <li class='nav-item'>
+                <li className='nav-item'>
                   <ul>
                     {authContext &&
                       authContext.currentUser &&
@@ -135,7 +136,7 @@ const Navbar = ({ isSignUpPage }) => {
                       )}
                     <li>
                       <a
-                        class='btn btn-sm ask-btn ask-btn bg-light text-dark settings'
+                        className='btn btn-sm ask-btn ask-btn bg-light text-dark settings'
                         onClick={() => authContext.logout()}
                       >
                         <h6>Logout</h6>
@@ -149,6 +150,7 @@ const Navbar = ({ isSignUpPage }) => {
         </div>
       </nav>
     </>
+    
   );
 };
 

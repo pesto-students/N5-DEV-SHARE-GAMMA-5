@@ -5,7 +5,7 @@ const SkeletonLoader = () => {
   return (
     <div
       style={{
-        width: '65%',
+        width: '100%',
         height: '15%',
         backgroundColor: '#FFFFFF',
         padding: '2%',
