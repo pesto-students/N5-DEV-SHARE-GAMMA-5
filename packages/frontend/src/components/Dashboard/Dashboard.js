@@ -84,7 +84,7 @@ const Dashboard = () => {
     return <Redirect to='/onboarding-setup' />;
   }
   return (
-    <div className="container">
+    <div className='container'>
       <div className='dashboard-container'>
         <div className='dashboard-details-container'>
           <div className='dashboard-menu'>
@@ -139,7 +139,6 @@ const Dashboard = () => {
                   <div className='company-item'>
                     <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>
-                    <i className="fas fa-external-link-alt"> </i>
                   </div>
                 </Link>
               ))}
