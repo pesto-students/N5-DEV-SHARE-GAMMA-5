@@ -77,7 +77,7 @@
       height: 40vh;
       background: #ffffff;
       border-radius: 5px;
-      margin-top: 5%;
+      // margin-top: 5%;
       min-width: 15vw !important;
       .header-section {
         background: #3a3939;
@@ -92,12 +92,17 @@
         background: #ffffff;
         align-items: center;
         flex-direction: row;
+        i{
+          color: $btn-primary-bg;
+        }
         h6{
-          margin: 0;
+          margin-bottom: 0;
+          margin-left: 10px;
+          margin-right: 10px;
           font-weight: 500;
         }
         img{
-          width: 30px;
+          width: 35px;
           padding: 2px;
           border-radius: 10%;
           margin: 4px;
@@ -113,10 +118,12 @@
   .dashboard-container {
     overflow: auto;
     padding: 2% 10%;
+    
     .dashboard-details-container {
       position: relative;
       display: flex !important;
       flex-direction: column;
+      width: 100%;
       .dashboard-menu {
         ul {
           flex-direction: row;
@@ -130,6 +137,7 @@
         }
       }
       .suggestions-container {
+        display: none;
         position: absolute;
         top: 1%;
         left: 80%;
@@ -150,8 +158,9 @@
 
 @media (max-width: 500px) {
   .dashboard-container {
-    padding: 2% 10%;
+    padding: 1% 10%;
     .dashboard-details-container {
+      width: 100%;
       .dashboard-menu {
         ul {
           flex-direction: row;

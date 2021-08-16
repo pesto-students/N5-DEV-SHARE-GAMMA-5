@@ -6,7 +6,7 @@ const UserFeed = ({ feedObj }) => {
   return (
     <div>
       <Link to={`/question/${feedObj.id}`}>
-        <div className='feed-item-container my-3'>
+        <div className='feed-item-container mb-3'>
           <h4>{feedObj.question} </h4>
           <span className='compill'>{feedObj.company}</span> <span className='compill'>{feedObj.category}</span>
           <span style={{ float: 'right' }}><small>{moment(feedObj.created_at.toString()).format('DD MMM YYYY')}</small></span>

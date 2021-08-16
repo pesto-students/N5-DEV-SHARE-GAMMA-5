@@ -137,10 +137,9 @@ const Dashboard = () => {
               && companies.map((company) => (
                 <Link to={`/company/${company.name}`}>
                   <div className='company-item'>
-                    <img src={company.imageUrl} alt='' height={30} />
-                    {/* <img src={'../../assets/' + idx.toString() + '.jpg'} alt='' /> */}
-                    {/* <span className='mx-3'>{idx + 1}</span> */}
+                    <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>
+                    <i className="fas fa-external-link-alt"> </i>
                   </div>
                 </Link>
               ))}
