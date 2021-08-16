@@ -1,51 +1,106 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import './askQuestion.scss';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import closeBtn from '../../../assets/close-btn.png';
 import ModalButtons from './ModalButtons';
 
 const AskQuestionModal = () => {
+  const history = useHistory();
   const cancelBtnRef = useRef();
   const [company, setCompany] = useState('');
   const [category, setCategory] = useState('');
   const [question, setQuestion] = useState('');
-  const [pollOptionOne, setPollOptionOne] = useState('');
-  const [pollOptionTwo, setPollOptionTwo] = useState('');
+  const [pollOptions, setPollOptions] = useState({
+    optionOne: '',
+    optionTwo: '',
+    optionThree: '',
+    optionFour: '',
+  });
   const [selection, setSelection] = useState('question');
   const [searchData, setSearchData] = useState([]);
+  // eslint-disable-next-line
+  const [inputFields, setInputFields] = useState(['optionOne', 'optionTwo']);
 
-  const debounce = (func, timeout = 3000) => {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, timeout);
-    };
+  const handleSearch = async (text) => {
+    const data = await axios.get(`/company/search/${text}`);
+    setSearchData(data.data);
   };
 
-  const handleSearch = async () => {
-    if (company.length > 0) {
-      const data = await axios.get(`/company/search/${company}`);
-      setSearchData(data.data);
+  const handleRemoveClick = (index, option) => {
+    const list = [...inputFields];
+    list.splice(index, 1);
+    setInputFields(list);
+    setPollOptions({ ...pollOptions, [option]: '' });
+  };
+
+  const handleAddClick = (option) => {
+    setInputFields([...inputFields, option]);
+  };
+
+  const handleSubmit = async () => {
+    const optionsCount = Object.values(pollOptions).filter((value) => {
+      return value.length > 0;
+    });
+    const id = uuidv4();
+    if (selection === 'poll') {
+      if (!company || !question || optionsCount.length < 2) {
+        return;
+      }
+      const data = {
+        company,
+        question,
+        id,
+        option1: pollOptions.optionOne,
+        option2: pollOptions.optionTwo,
+        option3: pollOptions.optionThree,
+        option4: pollOptions.optionFour,
+        category: 'test',
+      };
+      await axios.post('/polls', data, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      cancelBtnRef.current.click();
+      setCompany('');
+      setCategory('');
+      setQuestion('');
+      setPollOptions({
+        optionOne: '',
+        optionTwo: '',
+        optionThree: '',
+        optionFour: '',
+      });
+      history.push('/polls');
     } else {
-      setSearchData([]);
+      if (!company || !question || !category) {
+        return;
+      }
+      // eslint-disable-next-line
+      const data = { company, category, question, id };
+      await axios.post('/questions', data, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      cancelBtnRef.current.click();
+      setCompany('');
+      setCategory('');
+      setQuestion('');
+      history.push(`/question/${id}`);
     }
   };
-
   useEffect(() => {
     setCompany('');
     setCategory('');
     setQuestion('');
+    setPollOptions({
+      optionOne: '',
+      optionTwo: '',
+      optionThree: '',
+      optionFour: '',
+    });
   }, [selection]);
 
-  useEffect(() => {
-    if (company.length > 0) {
-      debounce(handleSearch());
-    } else {
-      setSearchData([]);
-    }
-  }, [company]);
   if (selection === 'question') {
     return (
       <div>
@@ -69,22 +124,17 @@ const AskQuestionModal = () => {
                   setSelection={setSelection}
                   selection={selection}
                 />
-                <input
-                  type='text'
-                  className='form-control mb-3'
-                  placeholder='Search for a company'
-                  value={company}
-                  onChange={(e) => {
-                    setCompany(e.target.value.trim());
+                <ReactSearchAutocomplete
+                  placeholder='Search for a company...'
+                  styling={{
+                    borderRadius: '5px',
+                    boxShadow: '2px 2px #3b49df',
                   }}
+                  onSearch={handleSearch}
+                  items={searchData}
+                  onSelect={(e) => setCompany(e.name)}
                 />
-                <ul className='list-group search-data'>
-                  {searchData
-                    && searchData.map((item) => (
-                      <li className='list-group-item'>{item.name}</li>
-                    ))}
-                </ul>
-                <div className='w-100'>
+                <div className='w-100 my-3'>
                   <select
                     className='form-select select-container'
                     value={category}
@@ -109,7 +159,11 @@ const AskQuestionModal = () => {
               </div>
 
               <div className='modal-footer'>
-                <button type='button' className='btn btn-sm my-2 login-btn'>
+                <button
+                  type='button'
+                  className='btn btn-sm my-2 login-btn'
+                  onClick={() => handleSubmit()}
+                >
                   Submit
                 </button>
                 <button
@@ -146,42 +200,109 @@ const AskQuestionModal = () => {
             </div>
             <div className='modal-body'>
               <ModalButtons setSelection={setSelection} selection={selection} />
-              <input
-                type='text'
-                className='form-control mb-3'
-                placeholder='Search for a company'
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+              <ReactSearchAutocomplete
+                placeholder='Search for a company...'
+                styling={{
+                  borderRadius: '5px',
+                  boxShadow: '2px 2px #3b49df',
+                }}
+                onSearch={handleSearch}
+                items={searchData}
+                onSelect={(e) => setCompany(e.name)}
               />
               <div>
                 <textarea
-                  className='form-control mt-3'
+                  className='form-control my-2'
                   placeholder='Type your Question here...'
                   maxLength={200}
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                 />
               </div>
+              <span>(Add 2 - 4 options)</span>
               <div className='mt-2'>
-                <input
-                  type='text'
-                  className='form-control mb-3'
-                  placeholder='Option 1'
-                  value={pollOptionOne}
-                  onChange={(e) => setPollOptionOne(e.target.value)}
-                />
-                <input
+                {inputFields.map((field, idx) => (
+                  <div className='field-group'>
+                    <input
+                      type='text'
+                      className='form-control mb-3'
+                      placeholder={`Option ${idx + 1}`}
+                      value={pollOptions[field]}
+                      onChange={(e) => {
+                        setPollOptions({
+                          ...pollOptions,
+                          [field]: e.target.value.trim(),
+                        });
+                      }}
+                    />
+                    {inputFields.length - 1 === idx && inputFields.length <= 3 && (
+                      <i
+                        className='fas fa-plus mt-2 ms-2'
+                        role='list'
+                        onClick={() => {
+                          if (idx === 1) {
+                            handleAddClick('optionThree');
+                          } else {
+                            handleAddClick('optionFour');
+                          }
+                        }}
+                      />
+                    )}
+                    {inputFields.length >= 3 && (
+                      <i
+                        className='fas fa-minus mt-2'
+                        role='list'
+                        onClick={() => handleRemoveClick(idx, field)}
+                      />
+                    )}
+                  </div>
+                ))}
+
+                {/* <input
                   type='text'
                   className='form-control mb-3'
                   placeholder='Option 2'
-                  value={pollOptionTwo}
-                  onChange={(e) => setPollOptionTwo(e.target.value)}
+                  value={pollOptions.optionTwo}
+                  onChange={(e) => {
+                    setPollOptions({
+                      ...pollOptions,
+                      optionTwo: e.target.value,
+                    });
+                  }}
                 />
+                <input
+                  type='text'
+                  className='form-control mb-3'
+                  placeholder='Option 3'
+                  value={pollOptions.optionThree}
+                  onChange={(e) => {
+                    setPollOptions({
+                      ...pollOptions,
+                      optionThree: e.target.value,
+                    });
+                  }}
+                />
+                <input
+                  type='text'
+                  className='form-control mb-3'
+                  placeholder='Option 4'
+                  value={pollOptions.optionFour}
+                  onChange={(e) => {
+                    setPollOptions({
+                      ...pollOptions,
+                      optionFour: e.target.value,
+                    });
+                  }}
+                /> */}
               </div>
             </div>
 
             <div className='modal-footer'>
-              <button type='button' className='btn btn-sm my-2 login-btn'>
+              <button
+                type='button'
+                className='btn btn-sm my-2 login-btn'
+                onClick={() => handleSubmit()}
+              >
                 Submit
               </button>
               <button

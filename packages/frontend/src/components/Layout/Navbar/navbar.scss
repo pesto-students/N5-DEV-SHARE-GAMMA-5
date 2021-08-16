@@ -12,14 +12,15 @@
   }
 }
 .search-box {
-  background-color: $search-input-bg;
-  border: 1px solid #f9fafa !important;
+  // background-color: $search-input-bg;
+  border: none;
   font-family: 'SegoeUI';
   outline: none;
-  margin-left: 20px;
-  &:focus {
-    box-shadow: 2px 2px $focus-primary-color;
-    border: 1px solid $focus-primary-color !important;
+  div {
+    border-radius: 5px !important;
+  }
+  .wrapper {
+    z-index: 1 !important;
   }
 }
 

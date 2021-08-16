@@ -25,7 +25,7 @@ const QuestionItem = ({ companyName }) => {
   };
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [companyName]);
   if (!loading) {
     if (questions.length === 0) {
       return <h3 className='text-center my-4'>Nothing found</h3>;
@@ -34,7 +34,7 @@ const QuestionItem = ({ companyName }) => {
       <>
         {questions
           && questions.map((question) => (
-            <Link to={`/question/${question.id}`}>
+            <Link to={`/question/${question.id}`} key={question.id}>
               <div className='question-item mb-2'>
                 <h5>{question.question}</h5>
                 <span>#{question.category}</span>

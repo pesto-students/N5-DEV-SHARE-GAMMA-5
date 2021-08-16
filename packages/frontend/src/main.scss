@@ -7,8 +7,8 @@
   list-style: none;
   text-decoration: none;
 }
-
-$btn-primary-bg: #2196f3;
+// $btn-primary-bg: #3b49df;
+$btn-primary-bg: #3b49df;
 $btn-disbaled-bg: #626de4;
 $focus-primary-color: #2196f3;
 $search-input-bg: #eef0f1;
@@ -20,13 +20,13 @@ $primary-body-bg: #eef0f1;
   border: 1px solid #cccccc;
 }
 
-body{
-  background:$primary-body-bg;
+body {
+  background: $primary-body-bg;
 }
-nav{
+nav {
   background-color: white;
 }
 
-.btn-primary{
-  background:$btn-primary-bg;
+.btn-primary {
+  background: $btn-primary-bg;
 }
