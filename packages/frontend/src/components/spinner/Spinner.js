@@ -6,10 +6,10 @@ const Spinner = () => {
     <>
       <div className='spinner-container container'>
         <img
-          src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'
+          src='https://i.gifer.com/ZZ5H.gif'
           alt=''
           className='d-block mx-auto'
-          style={{ width: '150px' }}
+          style={{ width: '80px' }}
         />
       </div>
     </>

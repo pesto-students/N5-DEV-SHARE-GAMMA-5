@@ -3,19 +3,20 @@
   font-family: 'Segoe UI';
 }
 .setup-container {
-  background: url('../../assets/onetimesetup.svg') repeat;
-  height: 80vh;
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  height: 90vh;
   display: grid;
   place-items: center;
   position: relative;
   .inner-container {
-    height: 80%;
+    height: 85%;
     overflow-y: auto;
-    width: 40%;
+    width: 50%;
     background: #ffffff;
     padding: 2%;
-    border: 2px solid #000000;
-    box-shadow: 5px 5px #000000;
+    // border: 2px solid #000000;
+   // box-shadow: 5px 5px #000000;
   }
   .setup-sub-title {
     color: $muted-text-color;
@@ -37,21 +38,30 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: $btn-primary-bg;
     color: #ffffff;
     align-self: center;
     font-weight: bolder;
     &:focus {
       box-shadow: none;
     }
-    &.finish-btn {
-      background-color: $btn-primary-bg;
-      position: absolute;
-      bottom: 11%;
-      right: 32%;
-    }
+    // &.finish-btn {
+    //   background-color: $btn-primary-bg;
+    //   position: absolute;
+    //   bottom: 11%;
+    //   right: 32%;
+    // }
   }
 }
-
+.finish-btn {
+  padding: 10px;
+  text-align: right;
+  width: 48%;
+  background-color: white;
+  position: absolute;
+  bottom: 7.5%;
+  right: 26%;
+}
 @media (min-width: 300px) and(max-width:600px) {
   .inner-container {
     width: 95% !important;

@@ -33,7 +33,8 @@ const VerifyEmail = () => {
           <br />
           <p>You&#39;re almost there!</p>
           <p>
-            Just click on the link sent to your <strong>work email</strong> to
+            Just click on the link sent to your
+            <strong> work email({app.auth().currentUser.email})</strong> to
             complete your signup.
           </p>
           <p>Still can&#39;t find the email?</p>
