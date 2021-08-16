@@ -50,7 +50,7 @@ const SignUp = () => {
       nickNameValid: false,
     });
     if (nickName.length < 6 || nickName.length > 10) {
-      setError('nickName must be between 6-10 characters');
+      setError('Nickname must be between 6-10 characters');
       return;
     }
     const doesnickNameNameExists = await checkIfNickNameExists(nickName);
@@ -234,7 +234,7 @@ const SignUp = () => {
               Sign up
             </button>
             <h6 className='my-2'>
-              Already on DevShare?{' '}
+              Already registered?{' '}
               <Link to='/'>
                 <span>Sign in</span>
               </Link>
