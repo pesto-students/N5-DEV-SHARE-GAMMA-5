@@ -9,7 +9,7 @@ const Spinner = () => {
           src='https://i.gifer.com/ZZ5H.gif'
           alt=''
           className='d-block mx-auto'
-          style={{ width: '80px' }}
+          style={{ width: '30px' }}
         />
       </div>
     </>

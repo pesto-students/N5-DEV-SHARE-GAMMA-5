@@ -3,6 +3,7 @@ import './dashboard.scss';
 import { Link, Redirect } from 'react-router-dom';
 import app from '../../firebase';
 import SkeletonLoader from '../skeleton/SkeletonLoader';
+import Polls from '../polls/Polls';
 import { AuthContext } from '../../context/context';
 import topicsImg from '../../assets/topics.png';
 import benegfitsImg from '../../assets/benefits.png';
@@ -12,10 +13,10 @@ import salaryImg from '../../assets/salary.png';
 import fbLogo from '../../assets/facebook.png';
 import githubLogo from '../../assets/github.png';
 import twitterLogo from '../../assets/twitter.png';
-// import upArrow from '../../assets/arrow-up.png';
+import pollImg from '../../assets/poll.png';
 import UserFeed from './UserFeed';
 
-const Dashboard = () => {
+const Dashboard = ({ location }) => {
   const { currentUser } = useContext(AuthContext);
   const [onboarded, setOnboarded] = useState(true);
   const [interests, setInterests] = useState([]);
@@ -23,6 +24,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [userFeed, setUserFeed] = useState([]);
   const [category, setCategory] = useState('');
+  const [dashboard, setDashboard] = useState('userFeed');
   const fetchInterests = async () => {
     const data = await app
       .firestore()
@@ -80,6 +82,9 @@ const Dashboard = () => {
       fetchUserFeed();
     }
   }, [interests, category]);
+  useEffect(() => {
+    setDashboard(location.state && location.state.dashboard ? 'polls' : 'userFeed');
+  }, [location]);
   if (!onboarded) {
     return <Redirect to='/onboarding-setup' />;
   }
@@ -89,25 +94,54 @@ const Dashboard = () => {
         <div className='dashboard-details-container'>
           <div className='dashboard-menu'>
             <ul>
-              <li onClick={() => setCategory('')}>
+              <li
+                onClick={() => {
+                  setDashboard('userFeed');
+                  setCategory('');
+                }}
+              >
                 <img src={topicsImg} alt='' />
                 <span>All</span>
               </li>
-              <li onClick={() => setCategory('benefits')}>
+              <li
+                onClick={() => {
+                  setDashboard('userFeed');
+                  setCategory('benefits');
+                }}
+              >
                 <img src={benegfitsImg} alt='' />
                 <span>Benefits</span>
               </li>
-              <li onClick={() => setCategory('culture')}>
+              <li
+                onClick={() => {
+                  setDashboard('userFeed');
+                  setCategory('culture');
+                }}
+              >
                 <img src={cultureImg} alt='' />
                 <span>Culture</span>
               </li>
-              <li onClick={() => setCategory('interviews')}>
+              <li
+                onClick={() => {
+                  setDashboard('userFeed');
+                  setCategory('interviews');
+                }}
+              >
                 <img src={interviewImg} alt='' />
                 <span>Interviews</span>
               </li>
-              <li onClick={() => setCategory('salaries')}>
+              <li
+                onClick={() => {
+                  setDashboard('userFeed');
+                  setCategory('salaries');
+                }}
+              >
                 <img src={salaryImg} alt='' />
                 <span>Salaries</span>
+              </li>
+              <li onClick={() => setDashboard('polls')}>
+                <img src={pollImg} alt='' />
+                <span>Polls</span>
               </li>
               <hr />
             </ul>
@@ -126,8 +160,10 @@ const Dashboard = () => {
                 <SkeletonLoader />
               </>
             )}
-
-            {userFeed && userFeed.map((feed) => <UserFeed feedObj={feed} />)}
+            {dashboard === 'polls' && <Polls />}
+            {dashboard === 'userFeed'
+              && userFeed
+              && userFeed.map((feed) => <UserFeed feedObj={feed} />)}
           </div>
           <div className='suggestions-container'>
             <div className='header-section'>
@@ -139,6 +175,7 @@ const Dashboard = () => {
                   <div className='company-item'>
                     <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>
+                    <i className='fas fa-external-link-alt'> </i>
                   </div>
                 </Link>
               ))}

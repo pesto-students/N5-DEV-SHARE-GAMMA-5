@@ -53,7 +53,7 @@ const Navbar = ({ isSignUpPage }) => {
                   placeholder='Search for a company...'
                   styling={{
                     borderRadius: '5px',
-                    boxShadow: '2px 2px #3b49df',
+                    boxShadow: '2px 2px #2196f3',
                     backgroundColor: '#fafafa',
                   }}
                   onSearch={handleSearch}

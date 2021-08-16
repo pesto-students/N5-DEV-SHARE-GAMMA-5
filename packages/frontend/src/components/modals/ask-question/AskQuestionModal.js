@@ -72,7 +72,7 @@ const AskQuestionModal = () => {
         optionThree: '',
         optionFour: '',
       });
-      history.push('/polls');
+      history.push('/dashboard', { dashboard: 'polls' });
     } else {
       if (!company || !question || !category) {
         return;
@@ -128,7 +128,7 @@ const AskQuestionModal = () => {
                   placeholder='Search for a company...'
                   styling={{
                     borderRadius: '5px',
-                    boxShadow: '2px 2px #3b49df',
+                    boxShadow: '2px 2px #2196f3',
                   }}
                   onSearch={handleSearch}
                   items={searchData}
@@ -204,7 +204,7 @@ const AskQuestionModal = () => {
                 placeholder='Search for a company...'
                 styling={{
                   borderRadius: '5px',
-                  boxShadow: '2px 2px #3b49df',
+                  boxShadow: '2px 2px #2196f3',
                 }}
                 onSearch={handleSearch}
                 items={searchData}
@@ -257,43 +257,6 @@ const AskQuestionModal = () => {
                     )}
                   </div>
                 ))}
-
-                {/* <input
-                  type='text'
-                  className='form-control mb-3'
-                  placeholder='Option 2'
-                  value={pollOptions.optionTwo}
-                  onChange={(e) => {
-                    setPollOptions({
-                      ...pollOptions,
-                      optionTwo: e.target.value,
-                    });
-                  }}
-                />
-                <input
-                  type='text'
-                  className='form-control mb-3'
-                  placeholder='Option 3'
-                  value={pollOptions.optionThree}
-                  onChange={(e) => {
-                    setPollOptions({
-                      ...pollOptions,
-                      optionThree: e.target.value,
-                    });
-                  }}
-                />
-                <input
-                  type='text'
-                  className='form-control mb-3'
-                  placeholder='Option 4'
-                  value={pollOptions.optionFour}
-                  onChange={(e) => {
-                    setPollOptions({
-                      ...pollOptions,
-                      optionFour: e.target.value,
-                    });
-                  }}
-                /> */}
               </div>
             </div>
 
