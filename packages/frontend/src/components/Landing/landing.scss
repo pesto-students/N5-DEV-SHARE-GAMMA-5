@@ -3,7 +3,9 @@ body {
   overflow: hidden;
 }
 .landing-container {
-  background: linear-gradient(180deg,$btn-primary-bg ,$btn-primary-dark-bg);
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  // background: linear-gradient(180deg,$btn-primary-bg ,$btn-primary-dark-bg);
   height: 80vh;
   display: grid;
   place-items: center;
