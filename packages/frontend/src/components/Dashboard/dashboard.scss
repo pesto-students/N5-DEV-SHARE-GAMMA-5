@@ -206,10 +206,11 @@
 }
 .catBadge{ display: inline-block;
    padding: 4px; margin-left: -2%; }
+
 .compill{
-  border-radius: 12px;
+  border-radius: 3px;
   // border: 1px solid gray;
-  background-color: #e2e4e6;
+  background-color: $btn-primary-light-bg;
   padding: 6px;
 }
 h4::first-letter {
