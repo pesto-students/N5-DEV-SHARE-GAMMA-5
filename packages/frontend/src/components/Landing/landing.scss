@@ -3,7 +3,9 @@ body {
   overflow: hidden;
 }
 .landing-container {
-  background: url('../../assets/landing.svg') no-repeat center center/cover;
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  // background: linear-gradient(180deg,$btn-primary-bg ,$btn-primary-dark-bg);
   height: 80vh;
   display: grid;
   place-items: center;
@@ -39,7 +41,7 @@ body {
         color: #000000;
         font-size: 0.8rem;
       }
-      h6 {
+      span {
         cursor: pointer;
       }
       .form-control:focus {

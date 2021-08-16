@@ -73,7 +73,7 @@ const Landing = () => {
             )}
             <h1>Welcome</h1>
             <form>
-              <div className='mb-3'>
+              <div className='mt-2 '>
                 <label htmlFor='nickName' className='form-label'>
                   Work email
                 </label>
@@ -94,7 +94,7 @@ const Landing = () => {
                   }
                 />
               </div>
-              <div className='my-3'>
+              <div className='mt-2 mb-2'>
                 <input
                   type='password'
                   className='form-control'
@@ -108,10 +108,9 @@ const Landing = () => {
                   }
                 />
               </div>
-
-              <h6 data-bs-toggle='modal' data-bs-target='#exampleModal'>
+              <p data-bs-toggle='modal' data-bs-target='#exampleModal' style={{ margin: 0 }}>
                 Forgot Password?
-              </h6>
+              </p>
               <button
                 type='submit'
                 className='btn btn-sm my-2 login-btn'
@@ -127,6 +126,7 @@ const Landing = () => {
                   Sign up
                 </button>
               </Link>
+              
             </form>
           </div>
         </div>
