@@ -7,7 +7,7 @@ const ModalButtons = ({ setSelection, selection }) => {
         type='button'
         className='btn btn-sm  mx-2 login-btn'
         style={{
-          boxShadow: selection === 'question' && '2px 2px #3B49DF',
+          boxShadow: selection === 'question' && '2px 2px #2196f3',
         }}
         onClick={() => {
           setSelection('question');
@@ -19,7 +19,7 @@ const ModalButtons = ({ setSelection, selection }) => {
         type='button'
         className='btn btn-sm  mx-2 login-btn'
         style={{
-          boxShadow: selection === 'poll' && '2px 2px #3B49DF',
+          boxShadow: selection === 'poll' && '2px 2px #2196f3',
         }}
         onClick={() => setSelection('poll')}
       >
