@@ -22,12 +22,13 @@ const Employees = ({ companyName }) => {
   };
   useEffect(() => {
     fetchEmployees();
-  }, []);
+  }, [companyName]);
   return (
     <div className='employees-container mt-4'>
       {employees
-        && employees.map((employee) => (
-          <div className='employee-item'>
+        && employees.map((employee, idx) => (
+          // eslint-disable-next-line
+          <div className='employee-item' key={idx}>
             <img src={userImg} alt='' />
             <h6 className='mt-2'>{employee.nickName}</h6>
             <Link to={`/user/${employee.nickName}`}>

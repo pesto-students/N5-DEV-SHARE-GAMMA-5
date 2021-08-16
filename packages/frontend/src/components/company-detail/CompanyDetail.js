@@ -51,12 +51,12 @@ const CompanyDetail = (props) => {
       });
       setCompany(companyDetails);
     }
-    setLoading(!loading);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchCompany();
-  }, []);
+  }, [companyName]);
   useEffect(() => {
     if (userDetails) {
       setInterests(userDetails.interests);

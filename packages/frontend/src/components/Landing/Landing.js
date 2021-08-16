@@ -11,7 +11,6 @@ const Landing = () => {
   const { loginUser, currentUser } = useContext(AuthContext);
   const history = useHistory();
   const emailRef = useRef();
-  const passwordRef = useRef();
   const [error, setError] = useState({
     msg: '',
     color: '',
@@ -93,12 +92,10 @@ const Landing = () => {
                       workEmail: e.target.value,
                     })
                   }
-                  onBlur={() => passwordRef.current.focus()}
                 />
               </div>
               <div className='mt-2 mb-2'>
                 <input
-                  ref={passwordRef}
                   type='password'
                   className='form-control'
                   placeholder='Password'

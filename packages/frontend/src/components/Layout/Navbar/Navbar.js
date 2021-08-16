@@ -1,14 +1,27 @@
 /* eslint-disable */
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import './navbar.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import profileImg from '../../../assets/user-1.png';
 import logo from '../../../assets/logo.svg';
-import app from '../../../firebase';
 import AskQuestionModal from '../../modals/ask-question/AskQuestionModal';
 import { AuthContext } from '../../../context/context';
 const Navbar = ({ isSignUpPage }) => {
+  const history = useHistory();
   const authContext = useContext(AuthContext);
+  const [searchData, setSearchData] = useState([]);
+  const [company, setCompany] = useState('');
+  const handleSearch = async (text) => {
+    const data = await axios.get(`/company/search/${text}`);
+    setSearchData(data.data);
+  };
+  useEffect(() => {
+    if (company.length > 0) {
+      history.push(`/company/${company}`);
+    }
+  }, [company]);
   return (
     <>
     
@@ -30,15 +43,24 @@ const Navbar = ({ isSignUpPage }) => {
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <form className='d-flex mx-auto col-sm-8 col-lg-8'>
-              <input
-                className={`form-control search-box ${authContext &&
-                  !authContext.currentUser && 'unauthorised'}`}
-                type='search'
-                placeholder='Search for questions, companies...'
-                aria-label='Search'
-                style={{ marginLeft: !app.auth().currentUser && '-4rem' }}
-              />
+            <form className='d-flex mx-auto col-sm-8 col-lg-5'>
+              <div
+                className={`form-control search-box ${
+                  authContext && !authContext.currentUser && 'unauthorised'
+                }`}
+              >
+                <ReactSearchAutocomplete
+                  placeholder='Search for a company...'
+                  styling={{
+                    borderRadius: '5px',
+                    boxShadow: '2px 2px #3b49df',
+                    backgroundColor: '#fafafa',
+                  }}
+                  onSearch={handleSearch}
+                  items={searchData}
+                  onSelect={(e) => setCompany(e.name)}
+                />
+              </div>
             </form>
 
             <ul className='navbar-nav me-auto mb-2 mb-lg-0 nav-items'>
