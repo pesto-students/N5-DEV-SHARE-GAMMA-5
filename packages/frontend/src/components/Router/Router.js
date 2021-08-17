@@ -15,6 +15,7 @@ import UserProfile from '../user-profile/UserProfile';
 import CompanyDetail from '../company-detail/CompanyDetail';
 import { AuthProvider } from '../../context/context';
 import QuestionDetail from '../question-details/QuestionDetail';
+import Notifications from '../notifications/Notifications';
 
 const Router = () => {
   return (
@@ -38,6 +39,7 @@ const Router = () => {
           <PrivateRoute exact path='/verify' component={VerifyEmail} />
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
           <PrivateRoute exact path='/settings' component={Settings} />
+          <PrivateRoute exact path='/notifications' component={Notifications} />
           <Route exact path='/user/:nickName' component={UserProfile} />
           <Route exact path='/question/:id' component={QuestionDetail} />
           <Route component={NotFound} />

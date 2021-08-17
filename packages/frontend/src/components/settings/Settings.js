@@ -7,7 +7,7 @@ import accountImg from '../../assets/account.png';
 import Profile from './profile/Profile';
 import Account from './account/Account';
 import Notification from './notification/Notification';
-import Loader from '../../assets/settings-loader.svg';
+import Loader from '../../assets/Rolling.svg';
 
 const Settings = () => {
   const { userDetails, fetchUserData } = useContext(AuthContext);

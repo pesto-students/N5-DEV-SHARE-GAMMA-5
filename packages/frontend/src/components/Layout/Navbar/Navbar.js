@@ -24,12 +24,11 @@ const Navbar = ({ isSignUpPage }) => {
   }, [company]);
   return (
     <>
-    
       <AskQuestionModal />
       <nav className='navbar navbar-expand-lg navbar-light px-5'>
         <div className='container'>
           <Link to='/' className={`logo ${isSignUpPage && 'mx-auto'}`}>
-            <img src={logo} alt='' style={{height:'35px',margin:'8px'}} />
+            <img src={logo} alt='' style={{ height: '35px', margin: '8px' }} />
           </Link>
           <button
             className='navbar-toggler'
@@ -73,16 +72,19 @@ const Navbar = ({ isSignUpPage }) => {
                       data-bs-toggle='modal'
                       data-bs-target='#questionModal'
                     >
-                      <button
-                        className='btn btn-primary'
-                        aria-current='page'
-                      >
+                      <button className='btn btn-primary' aria-current='page'>
                         <i className='fas fa-comment-alt ask-icon'></i>
                         <span> Ask question</span>
                       </button>
                     </li>
                     <li className='nav-item mx-3'>
-                      <i className='far fa-bell fa-2x position-relative'></i>
+                      <Link to='/notifications'>
+                        <i className='far fa-bell notification mt-1'>
+                          {authContext.showNotification && (
+                            <span class='badge'> </span>
+                          )}
+                        </i>
+                      </Link>
                     </li>
                   </>
                 )}
@@ -172,7 +174,6 @@ const Navbar = ({ isSignUpPage }) => {
         </div>
       </nav>
     </>
-    
   );
 };
 

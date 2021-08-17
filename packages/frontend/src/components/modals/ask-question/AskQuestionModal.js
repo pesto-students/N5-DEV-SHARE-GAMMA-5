@@ -46,7 +46,11 @@ const AskQuestionModal = () => {
     });
     const id = uuidv4();
     if (selection === 'poll') {
-      if (!company || !question || optionsCount.length < 2) {
+      if (
+        company.trim().length < 1
+        || question.trim().length < 1
+        || optionsCount.length < 2
+      ) {
         return;
       }
       const data = {
@@ -74,7 +78,7 @@ const AskQuestionModal = () => {
       });
       history.push('/dashboard', { dashboard: 'polls' });
     } else {
-      if (!company || !question || !category) {
+      if (company.trim().length < 1 || question.trim().length < 1 || !category) {
         return;
       }
       // eslint-disable-next-line
@@ -231,7 +235,7 @@ const AskQuestionModal = () => {
                       onChange={(e) => {
                         setPollOptions({
                           ...pollOptions,
-                          [field]: e.target.value.trim(),
+                          [field]: e.target.value,
                         });
                       }}
                     />

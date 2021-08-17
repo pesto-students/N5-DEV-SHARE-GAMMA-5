@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
   const [userDetails, setUserDetails] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
 
   const fetchUserData = async () => {
     const userData = await app
@@ -17,6 +18,29 @@ export const AuthProvider = ({ children }) => {
       .get();
 
     setUserDetails(userData.data());
+  };
+
+  const fetchUserNotifications = async () => {
+    await app
+      .firestore()
+      .collection('requests')
+      .where('userEmail', '==', currentUser.email)
+      .onSnapshot((data) => {
+        if (data.docs && data.docs.length > 0) {
+          setShowNotification(true);
+        }
+      });
+  };
+  const fetchMentorNotifications = async () => {
+    await app
+      .firestore()
+      .collection('requests')
+      .where('mentorEmail', '==', currentUser.email)
+      .onSnapshot((data) => {
+        if (data.docs && data.docs.length > 0) {
+          setShowNotification(true);
+        }
+      });
   };
   useEffect(() => {
     const unsubscribe = app.auth().onAuthStateChanged((user) => {
@@ -28,6 +52,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (currentUser) {
       fetchUserData();
+      fetchUserNotifications();
+      fetchMentorNotifications();
     }
   }, [currentUser]);
   const loginUser = (email, password) => {
@@ -56,6 +82,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         userDetails,
         fetchUserData,
+        setShowNotification,
+        showNotification,
       }}
     >
       {children}
