@@ -1,4 +1,4 @@
-# Sector17
+# Devshare
 
 [Devshare](https://devshare.netlify.app/) is the destination for developers to share and discover company insights such as reviews, salaries, work experiences, culture, benefits and interviews anonymously.
 
