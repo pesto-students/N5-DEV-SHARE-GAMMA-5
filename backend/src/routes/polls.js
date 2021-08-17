@@ -16,7 +16,7 @@ router.post('/', function (req, res, next) {
         { error: 'Id, Category, Question, 2 options and company are required' },
         400
     );
-    
+
     if(!option3){
       option3="";
     }
@@ -31,10 +31,22 @@ router.post('/', function (req, res, next) {
         created_at: formatedDate(new Date(), 'DD/MM/YYYY'),
         question: question,
         id,
-        option1,
-        option2,
-        option3,
-        option4
+        option1: {
+        count: 0,
+        option: option1,
+        },
+        option2: {
+          count: 0,
+          option: option2,
+        },
+        option3: {
+          count: 0,
+          option: option3,
+        },
+        option4: {
+          count: 0,
+          option: option4,
+        },
       })
       .then((docRef) => {
         return res.status(200).json({ message: 'Add Poll success' });
@@ -77,7 +89,7 @@ router.put('/:id', function(req, res, next) {
       //console.error("Error adding document: ", error);
       return res.status(500).json({ message: 'Update Poll error',error:JSON.stringify(error) });
   });
-  
+
 });
 
 module.exports = router;
