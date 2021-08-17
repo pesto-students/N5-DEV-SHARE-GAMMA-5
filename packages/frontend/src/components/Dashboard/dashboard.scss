@@ -1,7 +1,8 @@
 @import '../../main.scss';
 
-
-
+*{
+  font-family: 'Segoe UI';
+}
 .dashboard-container {
   height: 80vh;
   background-color: $primary-body-bg;
@@ -164,6 +165,7 @@
       .dashboard-menu {
         ul {
           flex-direction: row;
+          flex-wrap: wrap;
           width: 80%;
           margin: auto;
           hr {
