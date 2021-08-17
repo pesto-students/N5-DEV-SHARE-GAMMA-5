@@ -7,7 +7,7 @@ import NotFound from '../Not-Found/NotFound';
 import dateImg from '../../assets/date-img.png';
 import locationImg from '../../assets/location-img.png';
 import Spinner from '../spinner/Spinner';
-// import RequirementModal from '../modals/requirement/RequirementModal';
+import RequirementModal from '../modals/requirement/RequirementModal';
 import { AuthContext } from '../../context/context';
 
 const UserProfile = (props) => {
@@ -81,8 +81,8 @@ const UserProfile = (props) => {
     }
     return (
       <>
+      <RequirementModal profile={profile} />
       <div className='profile-container'>
-      {/* <RequirementModal /> */}
         <div className='background-container' />
         <div className='profile-details-container'>
           <img src={profileImg} alt='' className='profile-img' />

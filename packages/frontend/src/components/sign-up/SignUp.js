@@ -138,6 +138,7 @@ const SignUp = () => {
           },
           upVote: [],
           downVote: [],
+          pollIds: [],
         });
       setLoading(false);
       history.push('/verify');

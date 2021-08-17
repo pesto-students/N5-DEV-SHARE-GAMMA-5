@@ -47,7 +47,12 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  // width: 20%;
+  a {
+    text-decoration: none;
+    &:hover {
+      color: #000000;
+    }
+  }
   .profile {
     width: 2rem;
     height: auto;
@@ -61,6 +66,20 @@
   }
   .dropdown-item:active {
     background-color: $btn-primary-bg;
+  }
+  .notification {
+    position: relative;
+    font-size: 25px;
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border-radius: 100%;
+      background-color: #42f563;
+    }
   }
 }
 .nav-responsive {

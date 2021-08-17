@@ -108,7 +108,7 @@ const Landing = () => {
                   }
                 />
               </div>
-              <p data-bs-toggle='modal' data-bs-target='#exampleModal' style={{ margin: 0 }}>
+              <p data-bs-toggle='modal' data-bs-target='#exampleModal' style={{ margin: 0, cursor:'pointer' }}>
                 Forgot Password?
               </p>
               <button
