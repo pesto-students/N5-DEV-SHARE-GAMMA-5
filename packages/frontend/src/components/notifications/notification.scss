@@ -5,6 +5,7 @@
   overflow: auto;
   background-color: $primary-body-bg;
   padding: 2% 5%;
+  
   .notifications-details-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -38,6 +39,12 @@
       }
     }
     .notifications-item-container {
+      .empty-state {
+        height: 60vh;
+        display: grid;
+        place-items: center;
+        border-radius: 5px;
+      }
       width: 50%;
       .settings-loader {
         display: grid;

@@ -43,6 +43,7 @@
     align-self: flex-start;
   }
 }
+
 .nav-items {
   cursor: pointer;
   display: flex;
@@ -79,6 +80,15 @@
       padding: 0;
       border-radius: 100%;
       background-color: #42f563;
+    }
+  }
+  button {
+    border: none !important;
+    &:hover, &:active {
+      background-color: $btn-primary-bg !important;
+    }
+    &:focus {
+      box-shadow: none;
     }
   }
 }

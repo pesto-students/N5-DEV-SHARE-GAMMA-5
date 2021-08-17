@@ -134,12 +134,14 @@ const Navbar = ({ isSignUpPage }) => {
                       </button>
                     </li>
                     <li className='nav-item mx-3'>
-                      <button
-                        className='btn btn-sm ask-btn bg-light text-dark'
-                        aria-current='page'
-                      >
-                        <span>Notifications</span>
-                      </button>
+                      <Link to='/notifications'>
+                        <button
+                          className='btn btn-sm ask-btn bg-light text-dark'
+                          aria-current='page'
+                        >
+                          <span>Notifications</span>
+                        </button>
+                      </Link>
                     </li>
                   </>
                 )}

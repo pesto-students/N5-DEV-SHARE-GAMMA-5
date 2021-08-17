@@ -38,7 +38,7 @@ const Notifications = () => {
           });
         }
       });
-      setLoading(false);
+    setLoading(false);
   };
 
   const extractRequests = () => {
@@ -85,86 +85,87 @@ const Notifications = () => {
   return (
     <div className='notifications-container'>
       {notifications && (
-        <>
-          <div className='notifications-details-container container'>
-            <div className='notifications-menu'>
-              <ul>
-                <li
-                  style={{
-                    backgroundColor: '#FFFFFF',
-                  }}
-                >
-                  <img src={MentorImg} alt='' />
-                  <h6 className='mt-1'>Mentorship Requests</h6>
-                </li>
-              </ul>
-            </div>
-            <div className='notifications-item-container'>
-              {loading ? (
-                <Spinner />
-              ) : (
-                <>
-                  {/* eslint-disable-next-line */}
-                  {requests &&
-                    // eslint-disable-next-line
-                    requests.length > 0 &&
-                    requests.map((request) => (
-                      <div className='notifications-item my-3'>
-                        <h6>{request.requirement}</h6>
-                        {/* eslint-disable-next-line */}
-                        {userDetails.isMentor &&
-                          userDetails.workEmail === request.mentorEmail && (
-                            <div
-                              className='input-group'
-                              hidden={request.isRejected || request.isAccepted}
-                            >
-                              <button
-                                className='btn btn-sm bg-danger text-white me-2'
-                                type='button'
-                                onClick={() => handleDecision('decline', request)}
-                              >
-                                Decline
-                              </button>
-                              <button
-                                className='btn btn-sm bg-success text-white'
-                                type='button'
-                                onClick={() => handleDecision('accept', request)}
-                              >
-                                Accept
-                              </button>
-                            </div>
-                          )}
-                        {request.isAccepted && (
-                          <div
-                            className='alert alert-success w-50 p-2 mt-3'
-                            role='alert'
-                          >
-                            Request Accepted
-                          </div>
-                        )}
-                        {request.isRejected && (
-                          <div
-                            className='alert alert-danger w-50 p-2 mt-3'
-                            role='alert'
-                          >
-                            Request Accepted
-                          </div>
-                        )}
-                        {!request.isRejected && !request.isAccepted && (
-                          <div
-                            className='alert alert-info w-50 p-2 mt-3'
-                            role='alert'
-                          >
-                            Pending Request.
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                </>
-              )}
-            </div>
+        <div className='notifications-details-container container'>
+          <div className='notifications-menu'>
+            <ul>
+              <li
+                style={{
+                  backgroundColor: '#ffffff',
+                  boxShadow: '2px 2px #2196f3',
+                }}
+                hidden={requests.length < 1}
+              >
+                <img src={MentorImg} alt='' />
+                <h6 className='mt-1'>Mentorship Requests</h6>
+              </li>
+            </ul>
           </div>
-        </>
+          <div className='notifications-item-container'>
+            {loading && <Spinner />}
+            {!loading && requests.length < 1 && (
+              <div className='empty-state'>
+                <h5>No Requests Found</h5>
+              </div>
+            )}
+            {/* eslint-disable-next-line */}
+            {requests &&
+              // eslint-disable-next-line
+              requests.length > 0 &&
+              requests.map((request) => (
+                <div className='notifications-item my-3'>
+                  <h6>{request.requirement}</h6>
+                  {/* eslint-disable-next-line */}
+                  {userDetails.isMentor &&
+                    userDetails.workEmail === request.mentorEmail && (
+                      <div
+                        className='input-group'
+                        hidden={request.isRejected || request.isAccepted}
+                      >
+                        <button
+                          className='btn btn-sm bg-danger text-white me-2'
+                          type='button'
+                          onClick={() => handleDecision('decline', request)}
+                        >
+                          Decline
+                        </button>
+                        <button
+                          className='btn btn-sm bg-success text-white'
+                          type='button'
+                          onClick={() => handleDecision('accept', request)}
+                        >
+                          Accept
+                        </button>
+                      </div>
+                    )}
+                  {request.isAccepted && (
+                    <div
+                      className='alert alert-success w-50 p-2 mt-3'
+                      role='alert'
+                    >
+                      Request Accepted
+                    </div>
+                  )}
+                  {request.isRejected && (
+                    <div
+                      className='alert alert-danger w-50 p-2 mt-3'
+                      role='alert'
+                    >
+                      Request Accepted
+                    </div>
+                  )}
+                  {!request.isRejected && !request.isAccepted && (
+                    <div
+                      className='alert alert-info w-50 p-2 mt-3'
+                      role='alert'
+                      hidden={userDetails.workEmail === request.mentorEmail}
+                    >
+                      Pending Request.
+                    </div>
+                  )}
+                </div>
+              ))}
+          </div>
+        </div>
       )}
     </div>
   );
