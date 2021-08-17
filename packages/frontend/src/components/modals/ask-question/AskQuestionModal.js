@@ -7,6 +7,7 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import closeBtn from '../../../assets/close-btn.png';
 import ModalButtons from './ModalButtons';
 
+const url = 'https://devsharegamma.herokuapp.com/api/v1';
 const AskQuestionModal = () => {
   const history = useHistory();
   const cancelBtnRef = useRef();
@@ -25,7 +26,7 @@ const AskQuestionModal = () => {
   const [inputFields, setInputFields] = useState(['optionOne', 'optionTwo']);
 
   const handleSearch = async (text) => {
-    const data = await axios.get(`/company/search/${text}`);
+    const data = await axios.get(`${url}/company/search/${text}`);
     setSearchData(data.data);
   };
 
@@ -63,7 +64,7 @@ const AskQuestionModal = () => {
         option4: pollOptions.optionFour,
         category: 'test',
       };
-      await axios.post('/polls', data, {
+      await axios.post(`${url}/polls`, data, {
         headers: { 'Content-Type': 'application/json' },
       });
       cancelBtnRef.current.click();
@@ -83,7 +84,7 @@ const AskQuestionModal = () => {
       }
       // eslint-disable-next-line
       const data = { company, category, question, id };
-      await axios.post('/questions', data, {
+      await axios.post(`${url}/questions`, data, {
         headers: { 'Content-Type': 'application/json' },
       });
       cancelBtnRef.current.click();

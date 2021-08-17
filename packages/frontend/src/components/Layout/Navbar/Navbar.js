@@ -8,13 +8,15 @@ import profileImg from '../../../assets/user-1.png';
 import logo from '../../../assets/logo.svg';
 import AskQuestionModal from '../../modals/ask-question/AskQuestionModal';
 import { AuthContext } from '../../../context/context';
+
+const url = 'https://devsharegamma.herokuapp.com/api/v1';
 const Navbar = ({ isSignUpPage }) => {
   const history = useHistory();
   const authContext = useContext(AuthContext);
   const [searchData, setSearchData] = useState([]);
   const [company, setCompany] = useState('');
   const handleSearch = async (text) => {
-    const data = await axios.get(`/company/search/${text}`);
+    const data = await axios.get(`${url}/company/search/${text}`);
     setSearchData(data.data);
   };
   useEffect(() => {
