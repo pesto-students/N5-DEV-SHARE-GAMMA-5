@@ -7,14 +7,14 @@ const Footer = () => {
   return (
     <div
       className='footer-container'
-      style={{ backgroundColor: currentUser && '#d2d6db' }}
+      style={{ backgroundColor: currentUser && 'rgb(33 150 243 / 35%)' }}
     >
-      <p>
-        <strong>DEV Community</strong> – A constructive and inclusive social
+      <small>
+        <strong>Devshare</strong> – A constructive and inclusive social
         network for software developers. With you every step of your journey.
         <br />
-        <strong>DEV Community © 2021 - 2025</strong>
-      </p>
+        <strong>Devshare © 2021 - 2025</strong>
+      </small>
       ;
     </div>
   );

@@ -10,9 +10,9 @@ import benegfitsImg from '../../assets/benefits.png';
 import cultureImg from '../../assets/culture.png';
 import interviewImg from '../../assets/interviews.png';
 import salaryImg from '../../assets/salary.png';
-import fbLogo from '../../assets/facebook.png';
-import githubLogo from '../../assets/github.png';
-import twitterLogo from '../../assets/twitter.png';
+// import fbLogo from '../../assets/facebook.png';
+// import githubLogo from '../../assets/github.png';
+// import twitterLogo from '../../assets/twitter.png';
 import pollImg from '../../assets/poll.png';
 import UserFeed from './UserFeed';
 
@@ -92,65 +92,71 @@ const Dashboard = ({ location }) => {
     <div className='container'>
       <div className='dashboard-container'>
         <div className='dashboard-details-container'>
-          <div className='dashboard-menu'>
-            <ul>
-              <li
-                onClick={() => {
-                  setDashboard('userFeed');
-                  setCategory('');
-                }}
-              >
-                <img src={topicsImg} alt='' />
-                <span>All</span>
-              </li>
-              <li
-                onClick={() => {
-                  setDashboard('userFeed');
-                  setCategory('benefits');
-                }}
-              >
-                <img src={benegfitsImg} alt='' />
-                <span>Benefits</span>
-              </li>
-              <li
-                onClick={() => {
-                  setDashboard('userFeed');
-                  setCategory('culture');
-                }}
-              >
-                <img src={cultureImg} alt='' />
-                <span>Culture</span>
-              </li>
-              <li
-                onClick={() => {
-                  setDashboard('userFeed');
-                  setCategory('interviews');
-                }}
-              >
-                <img src={interviewImg} alt='' />
-                <span>Interviews</span>
-              </li>
-              <li
-                onClick={() => {
-                  setDashboard('userFeed');
-                  setCategory('salaries');
-                }}
-              >
-                <img src={salaryImg} alt='' />
-                <span>Salaries</span>
-              </li>
-              <li onClick={() => setDashboard('polls')}>
-                <img src={pollImg} alt='' />
-                <span>Polls</span>
-              </li>
-              <hr />
-            </ul>
-            <div className='social-links'>
-              <img src={githubLogo} alt='' />
-              <img src={fbLogo} alt='' />
-              <img src={twitterLogo} alt='' />
-            </div>
+          <div>
+              <div className='dashboard-menu '>
+                <div className='header-section'>
+                  <h5>Categories</h5>
+                </div>
+                <ul className="m-3 pb-2">
+                  <li
+                    onClick={() => {
+                      setDashboard('userFeed');
+                      setCategory('');
+                    }}
+                  >
+                    <img src={topicsImg} alt='' />
+                    <span>All</span>
+                  </li>
+                  <li
+                    onClick={() => {
+                      setDashboard('userFeed');
+                      setCategory('benefits');
+                    }}
+                  >
+                    <img src={benegfitsImg} alt='' />
+                    <span>Benefits</span>
+                  </li>
+                  <li
+                    onClick={() => {
+                      setDashboard('userFeed');
+                      setCategory('culture');
+                    }}
+                  >
+                    <img src={cultureImg} alt='' />
+                    <span>Culture</span>
+                  </li>
+                  <li
+                    onClick={() => {
+                      setDashboard('userFeed');
+                      setCategory('interviews');
+                    }}
+                  >
+                    <img src={interviewImg} alt='' />
+                    <span>Interviews</span>
+                  </li>
+                  <li
+                    onClick={() => {
+                      setDashboard('userFeed');
+                      setCategory('salaries');
+                    }}
+                  >
+                    <img src={salaryImg} alt='' />
+                    <span>Salaries</span>
+                  </li>
+                  <li onClick={() => setDashboard('polls')}>
+                    <img src={pollImg} alt='' />
+                    <span>Polls</span>
+                  </li>
+                  {/* <hr /> */}
+                </ul>
+                {/* <div className='social-links'>
+                  <img src={githubLogo} alt='' />
+                  <img src={fbLogo} alt='' />
+                  <img src={twitterLogo} alt='' />
+                </div> */}
+              </div>
           </div>
+
           <div className='dashboard-user-feed'>
             {loading && (
               <>
@@ -167,7 +173,7 @@ const Dashboard = ({ location }) => {
           </div>
           <div className='suggestions-container'>
             <div className='header-section'>
-              <h5>Top Suggestions</h5>
+              <h5>Suggestions</h5>
             </div>
             {companies
               && companies.map((company) => (
@@ -175,7 +181,7 @@ const Dashboard = ({ location }) => {
                   <div className='company-item'>
                     <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>
-                    <i className='fas fa-external-link-alt'> </i>
+                    {/* <i className='fas fa-external-link-alt'> </i> */}
                   </div>
                 </Link>
               ))}
