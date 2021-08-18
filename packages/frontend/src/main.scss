@@ -16,7 +16,7 @@ $focus-primary-color: #2196f3;
 $search-input-bg: #eef0f1;
 $muted-text-color: #837f7f;
 $notFound-bg-color: #2196f3;
-$primary-body-bg: #eef0f1;
+$primary-body-bg: #dde7f0f5;
 .form-control:focus {
   box-shadow: 2px 2px $btn-primary-bg;
   border: 1px solid #cccccc;
@@ -31,4 +31,8 @@ nav {
 
 .btn-primary {
   background: $btn-primary-bg;
+}
+
+.eOPJCx , .logo{
+  fill: $btn-primary-bg !important;
 }
