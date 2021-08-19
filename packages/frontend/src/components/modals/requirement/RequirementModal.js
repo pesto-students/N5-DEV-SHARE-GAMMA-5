@@ -30,9 +30,9 @@ const RequirementModal = ({ profile }) => {
             mentorEmail: profile.workEmail,
             userEmail: userDetails.workEmail,
             id,
+            user: userDetails.nickName,
           },
           company: profile.company,
-          // narenk70@gmail.com
         });
     } else {
       await app
@@ -47,6 +47,7 @@ const RequirementModal = ({ profile }) => {
             mentorEmail: profile.workEmail,
             userEmail: userDetails.workEmail,
             id,
+            user: userDetails.nickName,
           },
         });
     }

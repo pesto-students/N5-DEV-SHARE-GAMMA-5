@@ -2,10 +2,19 @@
 a {
   text-decoration: none;
   color: unset;
+  &:hover {
+    color: $btn-primary-bg;
+  }
 }
 .question-item {
   border: 1px solid #cccccc;
   border-radius: 5px;
   padding: 2% 5%;
   cursor: pointer;
+  &:hover {
+    box-shadow: 2px 2px 4px $btn-primary-bg;
+  }
+  p {
+    text-align: right;
+  }
 }

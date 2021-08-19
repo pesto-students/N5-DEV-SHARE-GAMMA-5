@@ -103,6 +103,7 @@ const Dashboard = ({ location }) => {
                       setDashboard('userFeed');
                       setCategory('');
                     }}
+                    className="mb-3"
                   >
                     <img src={topicsImg} alt='' />
                     <span>All</span>
@@ -112,6 +113,7 @@ const Dashboard = ({ location }) => {
                       setDashboard('userFeed');
                       setCategory('benefits');
                     }}
+                    className="mb-3"
                   >
                     <img src={benegfitsImg} alt='' />
                     <span>Benefits</span>
@@ -121,6 +123,7 @@ const Dashboard = ({ location }) => {
                       setDashboard('userFeed');
                       setCategory('culture');
                     }}
+                    className="mb-3"
                   >
                     <img src={cultureImg} alt='' />
                     <span>Culture</span>
@@ -130,6 +133,7 @@ const Dashboard = ({ location }) => {
                       setDashboard('userFeed');
                       setCategory('interviews');
                     }}
+                    className="mb-3"
                   >
                     <img src={interviewImg} alt='' />
                     <span>Interviews</span>
@@ -139,11 +143,12 @@ const Dashboard = ({ location }) => {
                       setDashboard('userFeed');
                       setCategory('salaries');
                     }}
+                    className="mb-3"
                   >
                     <img src={salaryImg} alt='' />
                     <span>Salaries</span>
                   </li>
-                  <li onClick={() => setDashboard('polls')}>
+                  <li onClick={() => setDashboard('polls')} className="mb-3">
                     <img src={pollImg} alt='' />
                     <span>Polls</span>
                   </li>
@@ -157,7 +162,7 @@ const Dashboard = ({ location }) => {
               </div>
           </div>
 
-          <div className='dashboard-user-feed'>
+          <div className='dashboard-user-feed'>.
             {loading && (
               <>
                 <SkeletonLoader />
@@ -170,6 +175,7 @@ const Dashboard = ({ location }) => {
             {dashboard === 'userFeed'
               && userFeed
               && userFeed.map((feed) => <UserFeed feedObj={feed} />)}
+
           </div>
           <div className='suggestions-container'>
             <div className='header-section'>

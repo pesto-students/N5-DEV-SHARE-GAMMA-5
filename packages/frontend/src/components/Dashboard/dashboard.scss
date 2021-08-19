@@ -1,6 +1,6 @@
 @import '../../main.scss';
 
-*{
+* {
   font-family: 'Segoe UI';
 }
 .dashboard-container {
@@ -26,7 +26,7 @@
       min-width: 14vw !important;
       max-width: 400px;
       .header-section {
-        background: #3a3939;
+        background: #6c757d;
         color: #ffffff;
         padding: 2%;
         text-align: center;
@@ -45,8 +45,12 @@
           border-radius: 5px;
           padding: 1%;
           &:hover {
-            background-color: #e2e4e6;
+            // background-color: #e2e4e6;
             color: $focus-primary-color;
+            box-shadow: 2px 2px 2px $focus-primary-color;
+            transform: scale(1.05);
+            transition-timing-function: ease-in;
+          transition-duration: 0.1s;
           }
           &:active {
             background-color: #e2e4e6;
@@ -55,7 +59,7 @@
           span {
             margin-left: 1rem;
             font-size: 1rem;
-            font-weight: normal;
+            font-weight: 500;
           }
         }
       }
@@ -74,6 +78,7 @@
       }
     }
     .dashboard-user-feed {
+      margin-top: -1rem;
       a {
         text-decoration: none;
         color: unset;
@@ -84,38 +89,41 @@
         padding: 2% 2%;
         width: 100%;
         cursor: pointer;
+        &:hover {
+          box-shadow: 4px 4px 4px $focus-primary-color;
+          transform: scale(1.05);
+          transition-timing-function: ease-in;
+          transition-duration: 0.1s;
+        }
       }
     }
     .suggestions-container {
       max-height: 300px;
-      background: #ffffff;
       border-radius: 5px;
-      // margin-top: 5%;
-      min-width: 14vw !important;
-      max-width: 400px;
+      max-width: 14vw;
       .header-section {
-        background: #3a3939;
+        background: #6c757d;
         color: #ffffff;
         padding: 2%;
         text-align: center;
         border-radius: 5px 5px 0 0;
       }
       .company-item {
-        padding: 4px;
+        padding: 2% 3%;
         display: flex;
         background: #ffffff;
         align-items: center;
         flex-direction: row;
-        i{
+        i {
           color: $btn-primary-bg;
         }
-        h6{
+        h6 {
           margin-bottom: 0;
           margin-left: 10px;
           margin-right: 10px;
           font-weight: 500;
         }
-        img{
+        img {
           width: 35px;
           padding: 2px;
           border-radius: 10%;
@@ -132,7 +140,7 @@
   .dashboard-container {
     overflow: auto;
     padding: 2% 2%;
-    
+
     .dashboard-details-container {
       position: relative;
       display: flex !important;
@@ -150,13 +158,12 @@
           // width: 100%;
           margin: 0 !important;
 
-          li span{
+          li span {
             margin-left: 4px;
           }
           hr {
             display: none;
           }
-          
         }
         .social-links {
           display: none;
@@ -229,25 +236,28 @@
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.dashboard-container{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.dashboard-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.catBadge{ display: inline-block;
-   padding: 4px; margin-left: -2%; }
+.catBadge {
+  display: inline-block;
+  padding: 4px;
+  margin-left: -2%;
+}
 
-.compill{
+.compill {
   color: $btn-primary-bg;
   font-weight: 700;
 }
 h4::first-letter {
   text-transform: capitalize;
 }
-small{
+small {
   color: #c3c9ce;
 }
-.answers{
-  h6{
+.answers {
+  h6 {
     margin-top: 10px;
     color: #8a8a8a;
     font-weight: bold;
@@ -256,7 +266,6 @@ small{
 h6::first-letter {
   text-transform: capitalize;
 }
-
 
 @media only screen and (min-width: 1600px) {
   .dashboard-container {

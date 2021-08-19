@@ -15,7 +15,7 @@ const Landing = () => {
     msg: '',
     color: '',
   });
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [userDetails, setUserDetails] = useState({
     workEmail: '',
     password: '',
@@ -92,6 +92,7 @@ const Landing = () => {
                       workEmail: e.target.value,
                     })
                   }
+                  data-testid='login-email'
                 />
               </div>
               <div className='mt-2 mb-2'>
@@ -108,7 +109,11 @@ const Landing = () => {
                   }
                 />
               </div>
-              <p data-bs-toggle='modal' data-bs-target='#exampleModal' style={{ margin: 0, cursor:'pointer' }}>
+              <p
+                data-bs-toggle='modal'
+                data-bs-target='#exampleModal'
+                style={{ margin: 0, cursor: 'pointer' }}
+              >
                 Forgot Password?
               </p>
               <button
@@ -126,7 +131,6 @@ const Landing = () => {
                   Sign up
                 </button>
               </Link>
-              
             </form>
           </div>
         </div>
