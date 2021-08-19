@@ -17,6 +17,7 @@ const CompanyDetail = (props) => {
   // eslint-disable-next-line
   const [interests, setInterests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState('');
 
   const handleFollowBtn = async (value) => {
     if (interests.includes(value)) {
@@ -80,11 +81,19 @@ const CompanyDetail = (props) => {
           />
           <div className='logo-section'>
             <img src={company.imageUrl} alt='' />
+            <h5 className='company-name mt-5'>
+              {`${company.name[0].toUpperCase()}${company.name.slice(1)}`}
+            </h5>
+          </div>
+          <div className='ratings-container ms-4 mt-3 d-flex align-items-center'>
+            <span className='me-2'>5.0</span>
+            <i className='fas fa-star' />
+            <i className='fas fa-star' />
+            <i className='fas fa-star' />
+            <i className='fas fa-star' />
+            <i className='fas fa-star' />
           </div>
 
-          <h5 className='company-name mt-4'>
-            {`${company.name[0].toUpperCase()}${company.name.slice(1)}`}
-          </h5>
           {currentUser && (
             <div className='follow-btn mb-1'>
               <button
@@ -100,13 +109,49 @@ const CompanyDetail = (props) => {
               </button>
             </div>
           )}
-
-          <hr />
+          <div className='tabs-container ms-3 mt-3'>
+            <button
+              type='button'
+              className={`${category === '' && 'button-active'}`}
+              onClick={() => setCategory('')}
+            >
+              All Topics
+            </button>
+            <button
+              type='button'
+              className={`${category === 'benefits' && 'button-active'}`}
+              onClick={() => setCategory('benefits')}
+            >
+              Benefits
+            </button>
+            <button
+              type='button'
+              className={`${category === 'culture' && 'button-active'}`}
+              onClick={() => setCategory('culture')}
+            >
+              Culture
+            </button>
+            <button
+              type='button'
+              className={`${category === 'interviews' && 'button-active'}`}
+              onClick={() => setCategory('interviews')}
+            >
+              Interviews
+            </button>
+            <button
+              type='button'
+              className={`${category === 'salaries' && 'button-active'}`}
+              onClick={() => setCategory('salaries')}
+            >
+              Salaries
+            </button>
+          </div>
+          <hr className='ms-3' />
         </div>
         <div className='company-body'>
           <div className='questions-container'>
             <h5 className='mb-2'>Recent Questions</h5>
-            <QuestionItem companyName={companyName} />
+            <QuestionItem companyName={companyName} category={category} />
           </div>
           <div className='users-containers'>
             <h5 className='text-center'>Verified Employees</h5>

@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/context';
 import app from '../../firebase';
 import './notification.scss';
 import MentorImg from '../../assets/coach.png';
+import profileImg from '../../assets/user-1.png';
 import Spinner from '../spinner/Spinner';
 
 const Notifications = () => {
@@ -19,7 +20,7 @@ const Notifications = () => {
         .where('mentorEmail', '==', userDetails.workEmail)
         .onSnapshot((data) => {
           if (data.docs && data.docs.length > 0) {
-            // setNotifications([]);
+            setNotifications([]);
             data.docs.forEach((doc) => {
               setNotifications([]);
               setNotifications((prev) => prev.concat(doc.data()));
@@ -33,6 +34,7 @@ const Notifications = () => {
       .where('userEmail', '==', userDetails.workEmail)
       .onSnapshot((data) => {
         if (data.docs && data.docs.length > 0) {
+          setNotifications([]);
           data.docs.forEach((doc) => {
             setNotifications((prev) => prev.concat(doc.data()));
           });
@@ -113,6 +115,10 @@ const Notifications = () => {
               requests.length > 0 &&
               requests.map((request) => (
                 <div className='notifications-item my-3'>
+                  <div className='d-flex align-items-center mb-2'>
+                    <img src={profileImg} alt='' />
+                    <h6>{request.user}</h6>
+                  </div>
                   <h6>{request.requirement}</h6>
                   {/* eslint-disable-next-line */}
                   {userDetails.isMentor &&

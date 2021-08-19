@@ -10,10 +10,9 @@ import Spinner from '../spinner/Spinner';
 import RequirementModal from '../modals/requirement/RequirementModal';
 import { AuthContext } from '../../context/context';
 
-const UserProfile = (props) => {
+const UserProfile = ({ match }) => {
   const { currentUser } = useContext(AuthContext);
-  // eslint-disable-next-line
-  const user = props.match.params.nickName;
+  const user = match.params.nickName;
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState(null);
   const [answers, setAnswers] = useState([]);

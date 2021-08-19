@@ -22,8 +22,25 @@
       margin-top: -2rem;
       padding-left: 2%;
       display: flex;
+      align-items: center;
       img {
         height: 80px;
+      }
+      .company-name {
+        padding-left: 2%;
+      }
+    }
+    .ratings-container {
+      span {
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #0caa41;
+      }
+      i {
+        color: #0caa41;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        padding: 0.2%;
       }
     }
     .follow-btn {
@@ -41,9 +58,25 @@
         }
       }
     }
-
-    .company-name {
-      padding-left: 2%;
+    .tabs-container {
+      display: flex;
+      button {
+        padding: 1rem;
+        padding-right: 2rem;
+        background: #fff;
+        border: none;
+        border-right: 1px solid #e5e5e5;
+        color: $btn-primary-bg;
+        font-weight: 500;
+      }
+      .button-active {
+        border-bottom: 3px solid $btn-primary-bg;
+      }
+      box-shadow: 0px 2px #cccccc;
+    }
+    hr {
+      margin-top: 0;
+      
     }
   }
   .company-body {
@@ -69,6 +102,16 @@
     .company-body {
       grid-template-columns: auto;
       padding: 0 0% 15% 0%;
+    }
+  }
+  .tabs-container {
+    flex-wrap: wrap;
+    // justify-content: center;
+    button {
+      border-top: none !important;
+      border-right: none !important;
+      border-left: none !important;
+      padding: none !important;
     }
   }
 }
