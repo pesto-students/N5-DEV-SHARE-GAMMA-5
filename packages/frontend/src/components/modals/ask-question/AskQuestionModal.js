@@ -11,6 +11,7 @@ const url = 'https://devsharegamma.herokuapp.com/api/v1';
 const AskQuestionModal = () => {
   const history = useHistory();
   const cancelBtnRef = useRef();
+  const [showError, setShowError] = useState(false);
   const [company, setCompany] = useState('');
   const [category, setCategory] = useState('');
   const [question, setQuestion] = useState('');
@@ -42,6 +43,7 @@ const AskQuestionModal = () => {
   };
 
   const handleSubmit = async () => {
+    setShowError(false);
     const optionsCount = Object.values(pollOptions).filter((value) => {
       return value.length > 0;
     });
@@ -52,6 +54,7 @@ const AskQuestionModal = () => {
         || question.trim().length < 1
         || optionsCount.length < 2
       ) {
+        setShowError(true);
         return;
       }
       const data = {
@@ -80,6 +83,7 @@ const AskQuestionModal = () => {
       history.push('/dashboard', { dashboard: 'polls' });
     } else {
       if (company.trim().length < 1 || question.trim().length < 1 || !category) {
+        setShowError(true);
         return;
       }
       // eslint-disable-next-line
@@ -106,6 +110,12 @@ const AskQuestionModal = () => {
     });
   }, [selection]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowError(false);
+    }, 3000);
+  }, [showError]);
+
   if (selection === 'question') {
     return (
       <div>
@@ -124,6 +134,7 @@ const AskQuestionModal = () => {
                   onClick={() => cancelBtnRef.current.click()}
                 />
               </div>
+              <p className={`${showError ? 'text-danger' : 'text-white'} m-0 ps-4`}>All Fields are required</p>
               <div className='modal-body'>
                 <ModalButtons
                   setSelection={setSelection}
@@ -203,6 +214,7 @@ const AskQuestionModal = () => {
                 onClick={() => cancelBtnRef.current.click()}
               />
             </div>
+            <span className={`${showError ? 'text-danger' : 'text-white'} m-0 ps-4`}>All Fields are required</span>
             <div className='modal-body'>
               <ModalButtons setSelection={setSelection} selection={selection} />
               <ReactSearchAutocomplete
