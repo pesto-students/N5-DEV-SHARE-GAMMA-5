@@ -30,7 +30,7 @@ const CompanyItem = ({
         <img src={company.imageUrl} alt='' height={40} />
         <button
           type='button'
-          className='select-btn mt-2'
+          className='select-btn mt-2 mx-2'
           style={{
             backgroundColor: `${!isSelected ? '#7b857e' : '#666967'}`,
           }}

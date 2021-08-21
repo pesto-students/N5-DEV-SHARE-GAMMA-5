@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './questions.scss';
 import app from '../../../firebase';
 import Spinner from '../../spinner/Spinner';
+import UserFeed from '../../Dashboard/UserFeed';
 
 const QuestionItem = ({ companyName, category }) => {
   const [questions, setQuestions] = useState([]);
@@ -46,18 +47,12 @@ const QuestionItem = ({ companyName, category }) => {
       return <h3 className='text-center my-4'>Nothing found</h3>;
     }
     return (
-      <>
+      <div className='company-questions'>
         {questions
            && questions.map((question) => (
-            <Link to={`/question/${question.id}`} key={question.id}>
-              <div className='question-item mb-2'>
-                <h5>{question.question}</h5>
-                <span className='compill'>#{question.category}</span>
-                <p>{question.created_at.toString()}</p>
-              </div>
-            </Link>
+           <UserFeed feedObj={question} />
           ))}
-      </>
+      </div>
     );
   }
   return <Spinner />;

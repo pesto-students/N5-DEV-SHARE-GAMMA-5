@@ -26,7 +26,7 @@
       min-width: 14vw !important;
       max-width: 400px;
       .header-section {
-        background: #6c757d;
+        background: $btn-primary-bg;
         color: #ffffff;
         padding: 2%;
         text-align: center;
@@ -50,7 +50,7 @@
             box-shadow: 2px 2px 2px $focus-primary-color;
             transform: scale(1.05);
             transition-timing-function: ease-in;
-          transition-duration: 0.1s;
+            transition-duration: 0.1s;
           }
           &:active {
             background-color: #e2e4e6;
@@ -102,7 +102,7 @@
       border-radius: 5px;
       max-width: 14vw;
       .header-section {
-        background: #6c757d;
+        background: $btn-primary-bg;
         color: #ffffff;
         padding: 2%;
         text-align: center;
