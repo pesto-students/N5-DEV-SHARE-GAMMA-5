@@ -76,12 +76,11 @@ const OneTimeSetup = () => {
                 ></CompanyItem>
               );
             })}
-            <br /><br />
+          <br />
+          <br />
         </div>
-        <div className="finish-btn">
-          <button  onClick={() => handleSubmit()}>
-            Finish
-          </button>
+        <div className='finish-btn'>
+          <button onClick={() => handleSubmit()}>Proceed</button>
         </div>
       </div>
     </div>

@@ -150,7 +150,7 @@ const CompanyDetail = (props) => {
         </div>
         <div className='company-body'>
           <div className='questions-container'>
-            <h5 className='mb-2'>Recent Questions</h5>
+            <h5 className='mb-2 ms-3'>Recent Questions</h5>
             <QuestionItem companyName={companyName} category={category} />
           </div>
           <div className='users-containers'>

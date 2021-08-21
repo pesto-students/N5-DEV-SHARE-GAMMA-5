@@ -50,7 +50,9 @@ const QuestionItem = ({ companyName, category }) => {
       <div className='company-questions'>
         {questions
            && questions.map((question) => (
-           <UserFeed feedObj={question} />
+             <div>
+               <UserFeed feedObj={question} />
+             </div>
           ))}
       </div>
     );

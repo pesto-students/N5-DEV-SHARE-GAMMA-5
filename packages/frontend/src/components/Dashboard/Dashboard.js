@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './dashboard.scss';
 import { Link, Redirect } from 'react-router-dom';
+import { FixedSizeList } from 'react-window';
 import app from '../../firebase';
 import SkeletonLoader from '../skeleton/SkeletonLoader';
 import Polls from '../polls/Polls';
@@ -85,6 +86,11 @@ const Dashboard = ({ location }) => {
   useEffect(() => {
     setDashboard(location.state && location.state.dashboard ? 'polls' : 'userFeed');
   }, [location]);
+  const Row = ({ index, style }) => (
+    <div style={style}>
+      <UserFeed feedObj={userFeed[index]} />
+    </div>
+  );
   if (!onboarded) {
     return <Redirect to='/onboarding-setup' />;
   }
@@ -93,76 +99,85 @@ const Dashboard = ({ location }) => {
       <div className='dashboard-container'>
         <div className='dashboard-details-container'>
           <div>
-              <div className='dashboard-menu '>
-                <div className='header-section'>
-                  <h5>Categories</h5>
-                </div>
-                <ul className="m-3 pb-2">
-                  <li
-                    onClick={() => {
-                      setDashboard('userFeed');
-                      setCategory('');
-                    }}
-                    className="mb-3"
-                  >
-                    <img src={topicsImg} alt='' />
-                    <span>All</span>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setDashboard('userFeed');
-                      setCategory('benefits');
-                    }}
-                    className="mb-3"
-                  >
-                    <img src={benegfitsImg} alt='' />
-                    <span>Benefits</span>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setDashboard('userFeed');
-                      setCategory('culture');
-                    }}
-                    className="mb-3"
-                  >
-                    <img src={cultureImg} alt='' />
-                    <span>Culture</span>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setDashboard('userFeed');
-                      setCategory('interviews');
-                    }}
-                    className="mb-3"
-                  >
-                    <img src={interviewImg} alt='' />
-                    <span>Interviews</span>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setDashboard('userFeed');
-                      setCategory('salaries');
-                    }}
-                    className="mb-3"
-                  >
-                    <img src={salaryImg} alt='' />
-                    <span>Salaries</span>
-                  </li>
-                  <li onClick={() => setDashboard('polls')} className="mb-3">
-                    <img src={pollImg} alt='' />
-                    <span>Polls</span>
-                  </li>
-                  {/* <hr /> */}
-                </ul>
-                {/* <div className='social-links'>
+            <div className='dashboard-menu '>
+              <div className='header-section'>
+                <h5>Categories</h5>
+              </div>
+              <ul className='m-3 pb-2'>
+                <li
+                  onClick={() => {
+                    setDashboard('userFeed');
+                    setCategory('');
+                  }}
+                  className={`mb-3 ${category === '' && 'menu-active'}`}
+                >
+                  <img src={topicsImg} alt='' />
+                  <span>All</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setDashboard('userFeed');
+                    setCategory('benefits');
+                  }}
+                  className={`mb-3 ${category === 'benefits' && 'menu-active'}`}
+                >
+                  <img src={benegfitsImg} alt='' />
+                  <span>Benefits</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setDashboard('userFeed');
+                    setCategory('culture');
+                  }}
+                  className={`mb-3 ${category === 'culture' && 'menu-active'}`}
+                >
+                  <img src={cultureImg} alt='' />
+                  <span>Culture</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setDashboard('userFeed');
+                    setCategory('interviews');
+                  }}
+                  className={`mb-3 ${
+                    category === 'interviews' && 'menu-active'
+                  }`}
+                >
+                  <img src={interviewImg} alt='' />
+                  <span>Interviews</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setDashboard('userFeed');
+                    setCategory('salaries');
+                  }}
+                  className={`mb-3 ${category === 'salaries' && 'menu-active'}`}
+                >
+                  <img src={salaryImg} alt='' />
+                  <span>Salaries</span>
+                </li>
+                <li
+                  onClick={() => {
+                    setDashboard('polls');
+                    setCategory('polls');
+                  }}
+                  className={`mb-3 ${category === 'polls' && 'menu-active'}`}
+                >
+                  <img src={pollImg} alt='' />
+                  <span>Polls</span>
+                </li>
+                {/* <hr /> */}
+              </ul>
+              {/* <div className='social-links'>
                   <img src={githubLogo} alt='' />
                   <img src={fbLogo} alt='' />
                   <img src={twitterLogo} alt='' />
                 </div> */}
-              </div>
+            </div>
           </div>
 
-          <div className='dashboard-user-feed'>.
+          <div className='dashboard-user-feed'>
+            .
             {loading && (
               <>
                 <SkeletonLoader />
@@ -172,10 +187,20 @@ const Dashboard = ({ location }) => {
               </>
             )}
             {dashboard === 'polls' && <Polls />}
-            {dashboard === 'userFeed'
+            {/* {dashboard === 'userFeed'
               && userFeed
-              && userFeed.map((feed) => <UserFeed feedObj={feed} />)}
-
+              && userFeed.map((feed) => <UserFeed feedObj={feed} />)} */}
+            {dashboard === 'userFeed' && userFeed && (
+              <FixedSizeList
+                height={1000}
+                width='100%'
+                itemSize={150}
+                itemCount={userFeed.length}
+                className='virtual-class'
+              >
+                {Row}
+              </FixedSizeList>
+            )}
           </div>
           <div className='suggestions-container'>
             <div className='header-section'>

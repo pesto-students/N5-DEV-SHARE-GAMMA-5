@@ -32,7 +32,7 @@ const CompanyItem = ({
           type='button'
           className='select-btn mt-2 mx-2'
           style={{
-            backgroundColor: `${!isSelected ? '#7b857e' : '#666967'}`,
+            backgroundColor: `${!isSelected ? '#7b857e' : '#2196f3'}`,
           }}
           onClick={() => {
             setIsSelected(!isSelected);

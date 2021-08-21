@@ -180,7 +180,7 @@ const SignUp = () => {
                   type='text'
                   className='form-control '
                   id='nickName'
-                  placeholder='bekBrace'
+                  placeholder='nickname'
                   value={userDetails.nickName}
                   onChange={(e) =>
                     setUserDetails({
