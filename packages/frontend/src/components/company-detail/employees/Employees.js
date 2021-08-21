@@ -30,6 +30,7 @@ const Employees = ({ companyName }) => {
           // eslint-disable-next-line
           <div className='employee-item' key={idx}>
             <img src={userImg} alt='' />
+            {employee.isMentor && <span className="badge">Mentor</span>}
             <h6 className='mt-2'>{employee.nickName}</h6>
             <Link to={`/user/${employee.nickName}`}>
               <button type='button' className='btn btn-sm btn-secondary'>

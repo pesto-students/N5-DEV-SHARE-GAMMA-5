@@ -7,17 +7,17 @@ import { AuthContext } from '../../context/context';
 import Spinner from '../spinner/Spinner';
 import QuestionItem from './questions/QuestionItem';
 import Employees from './employees/Employees';
+// import Polls from '../polls/Polls';
+import CompanyPoll from './company-poll/CompanyPoll';
 
-const CompanyDetail = (props) => {
-  // eslint-disable-next-line
+const CompanyDetail = ({ match }) => {
   const { userDetails, fetchUserData, currentUser } = useContext(AuthContext);
-  // eslint-disable-next-line
-  const companyName = props.match.params.company;
+  const companyName = match.params.company;
   const [company, setCompany] = useState(null);
-  // eslint-disable-next-line
   const [interests, setInterests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState('');
+  const [dashboard, setDashboard] = useState('userFeed');
 
   const handleFollowBtn = async (value) => {
     if (interests.includes(value)) {
@@ -113,46 +113,78 @@ const CompanyDetail = (props) => {
             <button
               type='button'
               className={`${category === '' && 'button-active'}`}
-              onClick={() => setCategory('')}
+              onClick={() => {
+                setDashboard('userFeed');
+                setCategory('');
+              }}
             >
               All Topics
             </button>
             <button
               type='button'
               className={`${category === 'benefits' && 'button-active'}`}
-              onClick={() => setCategory('benefits')}
+              onClick={() => {
+                setDashboard('userFeed');
+                setCategory('benefits');
+              }}
             >
               Benefits
             </button>
             <button
               type='button'
               className={`${category === 'culture' && 'button-active'}`}
-              onClick={() => setCategory('culture')}
+              onClick={() => {
+                setDashboard('userFeed');
+                setCategory('culture');
+              }}
             >
               Culture
             </button>
             <button
               type='button'
               className={`${category === 'interviews' && 'button-active'}`}
-              onClick={() => setCategory('interviews')}
+              onClick={() => {
+                setDashboard('userFeed');
+                setCategory('interviews');
+              }}
             >
               Interviews
             </button>
             <button
               type='button'
               className={`${category === 'salaries' && 'button-active'}`}
-              onClick={() => setCategory('salaries')}
+              onClick={() => {
+                setDashboard('userFeed');
+                setCategory('salaries');
+              }}
             >
               Salaries
+            </button>
+            <button
+              type='button'
+              className={`${category === 'polls' && 'button-active'}`}
+              onClick={() => {
+                setDashboard('polls');
+                setCategory('polls');
+              }}
+            >
+              Polls
             </button>
           </div>
           <hr className='ms-3' />
         </div>
         <div className='company-body'>
-          <div className='questions-container'>
-            <h5 className='mb-2 ms-3'>Recent Questions</h5>
-            <QuestionItem companyName={companyName} category={category} />
-          </div>
+          {dashboard === 'userFeed' && (
+            <div className='questions-container'>
+              <h5 className='mb-2 ms-3'>Recent Questions</h5>
+              <QuestionItem companyName={companyName} category={category} />
+            </div>
+          )}
+          {dashboard === 'polls' && (
+            <div className='ms-3'>
+              <CompanyPoll companyName={companyName} />
+            </div>
+          )}
           <div className='users-containers'>
             <h5 className='text-center'>Verified Employees</h5>
             <Employees companyName={companyName} />

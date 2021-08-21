@@ -189,6 +189,7 @@ const SignUp = () => {
                     })
                   }
                   onBlur={(e) => handleNickName(e.target.value)}
+                  maxLength={10}
                 />
               </div>
               <div className='mb-3'>

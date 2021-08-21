@@ -11,9 +11,6 @@ import benegfitsImg from '../../assets/benefits.png';
 import cultureImg from '../../assets/culture.png';
 import interviewImg from '../../assets/interviews.png';
 import salaryImg from '../../assets/salary.png';
-// import fbLogo from '../../assets/facebook.png';
-// import githubLogo from '../../assets/github.png';
-// import twitterLogo from '../../assets/twitter.png';
 import pollImg from '../../assets/poll.png';
 import UserFeed from './UserFeed';
 
@@ -85,6 +82,7 @@ const Dashboard = ({ location }) => {
   }, [interests, category]);
   useEffect(() => {
     setDashboard(location.state && location.state.dashboard ? 'polls' : 'userFeed');
+    setCategory(location.state && location.state.dashboard ? 'polls' : '');
   }, [location]);
   const Row = ({ index, style }) => (
     <div style={style}>
@@ -192,7 +190,7 @@ const Dashboard = ({ location }) => {
               && userFeed.map((feed) => <UserFeed feedObj={feed} />)} */}
             {dashboard === 'userFeed' && userFeed && (
               <FixedSizeList
-                height={1000}
+                height={800}
                 width='100%'
                 itemSize={150}
                 itemCount={userFeed.length}
@@ -212,7 +210,6 @@ const Dashboard = ({ location }) => {
                   <div className='company-item'>
                     <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>
-                    {/* <i className='fas fa-external-link-alt'> </i> */}
                   </div>
                 </Link>
               ))}

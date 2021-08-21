@@ -23,7 +23,6 @@ const AskQuestionModal = () => {
   });
   const [selection, setSelection] = useState('question');
   const [searchData, setSearchData] = useState([]);
-  // eslint-disable-next-line
   const [inputFields, setInputFields] = useState(['optionOne', 'optionTwo']);
 
   const handleSearch = async (text) => {
