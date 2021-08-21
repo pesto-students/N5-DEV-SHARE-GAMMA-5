@@ -39,7 +39,7 @@ router.get('/company/search/:id', function(req, res, next) {
         array.push({"name":doc.id});
       });
 
-      return res.status(200).json(array.filter((c)=> {return c.name.includes(search_text) }));
+      return res.status(200).json(array.filter((c)=> {return c.name.toLowerCase().includes(search_text.toLowerCase()) }));
   })
   .catch((error) => {
       //console.error("Error adding document: ", error);
