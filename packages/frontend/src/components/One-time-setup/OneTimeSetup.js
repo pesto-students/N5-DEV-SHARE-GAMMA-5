@@ -80,7 +80,13 @@ const OneTimeSetup = () => {
           <br />
         </div>
         <div className='finish-btn'>
-          <button onClick={() => handleSubmit()}>Proceed</button>
+          <button
+            onClick={() => handleSubmit()}
+            disabled={count < 5}
+            style={{ background: count < 5 && '#7b857e' }}
+          >
+            Proceed
+          </button>
         </div>
       </div>
     </div>

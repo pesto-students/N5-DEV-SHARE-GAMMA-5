@@ -9,14 +9,16 @@ const PollItem = ({ poll, fetchPolls }) => {
   const { userDetails, fetchUserData } = useContext(AuthContext);
   const [pollOption, setPollOption] = useState('');
   // eslint-disable-next-line
-  const [userPollIds, setUserPollIds] = useState(
+  const [userPollIds] = useState(
     // eslint-disable-next-line
     userDetails && userDetails.pollIds
   );
+  const [indexes, setIndexes] = useState({ option1: '' });
   const option1Ref = useRef();
   const option2Ref = useRef();
   const option3Ref = useRef();
   const option4Ref = useRef();
+  const inputRef = useRef();
   const getIndex = (option) => {
     let idx;
     if (option && option.current) {
@@ -52,6 +54,9 @@ const PollItem = ({ poll, fetchPolls }) => {
     fetchPolls();
   };
   useEffect(() => {}, [poll]);
+  useEffect(() => {
+    setIndexes({ ...indexes, option1: getIndex(option1Ref) });
+  }, []);
   return (
     <div className='poll-item-container mt-3' key={poll.id}>
       <h5 className='mb-3'>{poll.question}</h5>
@@ -59,7 +64,7 @@ const PollItem = ({ poll, fetchPolls }) => {
       <div className='poll-options-container'>
         {poll.option1.option && (
           <div className='poll-option' ref={option1Ref}>
-            <span className='me-2'>{getIndex(option1Ref)}</span>
+            <span className='me-2'>{indexes.option1}</span>
             <div className='form-check mb-3'>
               <input
                 className='form-check-input'
@@ -68,6 +73,7 @@ const PollItem = ({ poll, fetchPolls }) => {
                 id='flexRadioDefault1'
                 onChange={() => setPollOption('option1')}
                 disabled={userPollIds && userPollIds.includes(poll.id)}
+                ref={inputRef}
               />
               <p>{poll.option1.option}</p>
             </div>
@@ -128,7 +134,7 @@ const PollItem = ({ poll, fetchPolls }) => {
           type='button'
           onClick={() => handleSubmit()}
         >
-          Submit
+          Vote
         </button>
       )}
       {userPollIds && userPollIds.includes(poll.id) && (

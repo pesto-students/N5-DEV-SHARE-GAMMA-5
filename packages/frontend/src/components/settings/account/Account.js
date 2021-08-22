@@ -59,7 +59,7 @@ const Account = ({ userDetails, fetchUserData, setLoading }) => {
             checked={isMentor}
             onChange={() => setIsMentor(!isMentor)}
           />
-          <label className='form-check-label'>Mentorship Availability</label>
+          <label className='form-check-label'>Become a Mentor</label>
         </div>
         <label className='form-label'>Nickname</label>
         <input

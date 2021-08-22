@@ -4,8 +4,7 @@ import app from '../../firebase';
 
 const UserFeed = ({ feedObj }) => {
   const [answers, setAnswers] = useState([]);
-  const [upVoteCount, setUpVoteCount] = useState(0);
-  const [downVoteCount, setDownVoteCount] = useState(0);
+  const [reactionsCount, setReactionsCount] = useState(0);
   const fetchAnswers = async () => {
     const result = [];
     const data = await app
@@ -23,10 +22,11 @@ const UserFeed = ({ feedObj }) => {
 
   useEffect(() => {
     if (answers) {
+      let count = 0;
       answers.forEach((answer) => {
-        if (answer.voteCount > 0) setUpVoteCount(upVoteCount + 1);
-        else setDownVoteCount(downVoteCount + 1);
+        count += answer.reactions;
       });
+      setReactionsCount(count);
     }
   }, [answers]);
   return (
@@ -49,7 +49,7 @@ const UserFeed = ({ feedObj }) => {
           <div className='d-flex flex-column align-items-center'>
             <div>
               <i className='far fa-heart me-1' />
-              <span>{upVoteCount + downVoteCount}</span>
+              <span>{reactionsCount}</span>
             </div>
             <h6>Reactions</h6>
           </div>

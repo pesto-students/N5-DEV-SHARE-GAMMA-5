@@ -166,11 +166,6 @@ const Dashboard = ({ location }) => {
                 </li>
                 {/* <hr /> */}
               </ul>
-              {/* <div className='social-links'>
-                  <img src={githubLogo} alt='' />
-                  <img src={fbLogo} alt='' />
-                  <img src={twitterLogo} alt='' />
-                </div> */}
             </div>
           </div>
 
@@ -192,7 +187,7 @@ const Dashboard = ({ location }) => {
               <FixedSizeList
                 height={800}
                 width='100%'
-                itemSize={150}
+                itemSize={180}
                 itemCount={userFeed.length}
                 className='virtual-class'
               >
