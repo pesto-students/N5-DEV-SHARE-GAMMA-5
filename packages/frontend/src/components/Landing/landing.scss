@@ -4,7 +4,7 @@ body {
 }
 .landing-container {
   background-color: $btn-primary-dark-bg;
-  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  background-image: url('https://www.transparenttextures.com/patterns/bright-squares.png');
   // background: linear-gradient(180deg,$btn-primary-bg ,$btn-primary-dark-bg);
   height: 80vh;
   display: grid;
@@ -26,7 +26,11 @@ body {
     }
     .login-section {
       width: 70%;
-
+      .test-btn {
+        background-color: $btn-primary-bg;
+        color: #ffffff;
+        font-weight: 500;
+      }
       h1 {
         color: $muted-text-color;
         font-weight: bolder;

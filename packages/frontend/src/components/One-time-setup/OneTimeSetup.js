@@ -57,7 +57,7 @@ const OneTimeSetup = () => {
   return (
     <div className='setup-container'>
       <div className='inner-container'>
-        <h2 className='setup-title'>Which companies you're interested in?</h2>
+        <h2 className='setup-title'>Which companies are you interested in?</h2>
         <h5 className='setup-sub-title my-3'>
           Select atleast 5 to customize your feed
         </h5>

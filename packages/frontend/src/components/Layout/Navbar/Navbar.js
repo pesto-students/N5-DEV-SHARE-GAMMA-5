@@ -22,6 +22,7 @@ const Navbar = ({ isSignUpPage }) => {
   useEffect(() => {
     if (company.length > 0) {
       history.push(`/company/${company}`);
+      setCompany('')
     }
   }, [company]);
   return (
