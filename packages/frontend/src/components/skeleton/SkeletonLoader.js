@@ -6,7 +6,7 @@ const SkeletonLoader = () => {
     <div
       style={{
         width: '100%',
-        height: '15%',
+        height: '8%',
         backgroundColor: '#FFFFFF',
         padding: '2%',
         borderRadius: '5px',
@@ -15,7 +15,7 @@ const SkeletonLoader = () => {
     >
       <SkeletonTheme color='#dcdfe3' highlightColor='#f0f2f5'>
         <p>
-          <Skeleton circle count={3} height={5} />
+          <Skeleton circle count={4} height={5} />
         </p>
       </SkeletonTheme>
     </div>

@@ -66,6 +66,7 @@ const RequirementModal = ({ profile }) => {
       <div className='modal-dialog'>
         <div className='modal-content'>
           <div className='modal-body mt-2'>
+            <h5 className='text-center mb-2'>Send a note to mentor</h5>
             <textarea
               type='text'
               className='form-control'

@@ -129,7 +129,10 @@ const SignUp = () => {
           isOneTimeSetupCompleted: false,
           isMentor: false,
           createdAt: new Date(),
-          company: getCompanyNameFromEmail(workEmail),
+          company:
+            workEmail === 'devsharegamma@gmail.com'
+              ? 'amazon'
+              : getCompanyNameFromEmail(workEmail),
           profileDetails: {
             jobTitle: '',
             location: '',
@@ -159,7 +162,11 @@ const SignUp = () => {
         <div className='signup-inner-container'>
           <div className='signup-section px-4 py-4'>
             {error && (
-              <div className='alert text-danger bg-light' role='alert'>
+              <div
+                className='alert text-danger bg-light'
+                role='alert'
+                data-testid='alert'
+              >
                 {error}
               </div>
             )}
@@ -173,7 +180,7 @@ const SignUp = () => {
                   type='text'
                   className='form-control '
                   id='nickName'
-                  placeholder='bekBrace'
+                  placeholder='nickname'
                   value={userDetails.nickName}
                   onChange={(e) =>
                     setUserDetails({
@@ -182,6 +189,7 @@ const SignUp = () => {
                     })
                   }
                   onBlur={(e) => handleNickName(e.target.value)}
+                  maxLength={10}
                 />
               </div>
               <div className='mb-3'>
@@ -231,6 +239,7 @@ const SignUp = () => {
                 canFormBeSubmitted() ? 'button-active' : 'button-disabled'
               }`}
               onClick={(e) => handleSubmit(e)}
+              placeholder='btn-text'
             >
               Sign up
             </button>

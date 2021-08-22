@@ -142,7 +142,7 @@ const UserProfile = ({ match }) => {
                 <Link to={`/question/${answer.question_id}`}>
                   <div className='question-item'>
                     <h6>{answer.question}</h6>
-                    <span>#{profile.company}</span>
+                    <span className='compill'>#{profile.company}</span>
                   </div>
                 </Link>
               ))}
