@@ -44,7 +44,10 @@ const Landing = () => {
       await loginUser(workEmail, password);
       history.push('/dashboard');
     } catch (error) {
-      if (error && error.code === 'auth/wrong-password') {
+      if (
+        (error && error.code === 'auth/wrong-password') ||
+        (error && error.code === 'auth/user-not-found')
+      ) {
         setError({ msg: 'Invalid Credentials', color: 'text-danger' });
       } else {
         setError({ msg: 'Something Went Wrong', color: 'text-danger' });
@@ -71,6 +74,17 @@ const Landing = () => {
                 {error.msg}
               </div>
             )}
+            <button
+              className='btn btn-sm test-btn mb-2'
+              onClick={() => {
+                setUserDetails({
+                  workEmail: process.env.REACT_APP_TEST_USER_EMAIL,
+                  password: process.env.REACT_APP_TEST_USER_PASS,
+                });
+              }}
+            >
+              Login with Test /c
+            </button>
             <h1>Welcome</h1>
             <form>
               <div className='mt-2 '>

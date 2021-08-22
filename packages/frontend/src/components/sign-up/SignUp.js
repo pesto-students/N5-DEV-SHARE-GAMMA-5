@@ -12,6 +12,8 @@ import {
 } from '../../utils/Helper';
 import { AuthContext } from '../../context/context';
 
+const emailHandles = ['gmail', 'yahoo', 'outlook', 'hotmail'];
+
 const SignUp = () => {
   const { registerUser, currentUser } = useContext(AuthContext);
   const history = useHistory();
@@ -66,12 +68,17 @@ const SignUp = () => {
   };
 
   const handleWorkEmail = async (email) => {
+    const emailDomain = getCompanyNameFromEmail(email.toLowerCase())
     setFormValidation({
       ...formValidation,
       workEmailValid: false,
     });
     if (!isValidEmail(email)) {
       setError('Enter a valid Email');
+      return;
+    }
+    if (emailHandles.includes(emailDomain)) {
+      setError('Please use a work email');
       return;
     }
     const isEmailExists = await checkIfEmailExists(email);
