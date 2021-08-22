@@ -187,7 +187,7 @@ const Dashboard = ({ location }) => {
               <FixedSizeList
                 height={800}
                 width='100%'
-                itemSize={180}
+                itemSize={160}
                 itemCount={userFeed.length}
                 className='virtual-class'
               >

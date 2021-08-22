@@ -83,7 +83,7 @@ const Landing = () => {
                 });
               }}
             >
-              Login with Test /c
+              Login with Test a/c
             </button>
             <h1>Welcome</h1>
             <form>
