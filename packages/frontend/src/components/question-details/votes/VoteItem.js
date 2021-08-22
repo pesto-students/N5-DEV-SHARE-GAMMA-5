@@ -54,7 +54,10 @@ const VoteItem = ({ answerId, answer }) => {
           .firestore()
           .collection('answers')
           .doc(vote.answerId)
-          .update({ voteCount: firebase.firestore.FieldValue.increment(1) });
+          .update({
+            voteCount: firebase.firestore.FieldValue.increment(1),
+            reactions: firebase.firestore.FieldValue.increment(1),
+          });
         await app
           .firestore()
           .collection('users')
@@ -68,7 +71,10 @@ const VoteItem = ({ answerId, answer }) => {
           .firestore()
           .collection('answers')
           .doc(vote.answerId)
-          .update({ voteCount: firebase.firestore.FieldValue.increment(-1) });
+          .update({
+            voteCount: firebase.firestore.FieldValue.increment(-1),
+            reactions: firebase.firestore.FieldValue.increment(1),
+          });
         await app
           .firestore()
           .collection('users')

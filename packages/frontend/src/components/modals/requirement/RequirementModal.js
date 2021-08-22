@@ -10,10 +10,15 @@ const RequirementModal = ({ profile }) => {
   const { userDetails, setShowNotification } = useContext(AuthContext);
   const cancelBtnRef = useRef();
   const [requirement, setRequirement] = useState('');
+  const [showError, setShowError] = useState(false);
   const handleSubmit = async () => {
+    setShowError(false);
     const id = uuid();
     const docId = `${userDetails.workEmail}+${profile.workEmail}`;
-    if (requirement.trim().length < 1) return;
+    if (requirement.trim().length < 50) {
+      setShowError(true);
+      return;
+    }
     const data = await app.firestore().collection('requests').doc(docId).get();
     if (!data.data()) {
       await app
@@ -55,6 +60,7 @@ const RequirementModal = ({ profile }) => {
     setShowNotification(false);
     history.push('/notifications');
   };
+  React.useEffect(() => setShowError(false), [requirement.length > 50]);
   return (
     <div
       className='modal fade requirement-modal-container'
@@ -67,6 +73,9 @@ const RequirementModal = ({ profile }) => {
         <div className='modal-content'>
           <div className='modal-body mt-2'>
             <h5 className='text-center mb-2'>Send a note to mentor</h5>
+            <p className={`${showError ? 'text-danger' : 'text-white'}`}>
+              Requirement must be atleast 50 characters
+            </p>
             <textarea
               type='text'
               className='form-control'

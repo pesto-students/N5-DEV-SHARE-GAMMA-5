@@ -59,6 +59,7 @@ const QuestionDetail = (props) => {
       question: questionDetails.question,
       voteCount: 0,
       company: userDetails.company,
+      reactions: 0,
     });
     setAddAnswer('');
     setShowBtn(false);
@@ -97,7 +98,6 @@ const QuestionDetail = (props) => {
               <textarea
                 className='form-control'
                 placeholder='Add your answer here...'
-                maxLength={300}
                 value={addAnswer}
                 onChange={(e) => setAddAnswer(e.target.value)}
                 disabled={!currentUser}

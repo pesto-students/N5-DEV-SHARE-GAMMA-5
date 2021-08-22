@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="1" errors="0" time="6.293">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-08-19T15:30:05" time="2.546" tests="3">
+    <testcase classname=" extract company name" name=" extract company name" time="0.002">
+    </testcase>
+    <testcase classname=" render" name=" render" time="0.124">
+    </testcase>
+    <testcase classname=" input value" name=" input value" time="0.188">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="1" skipped="0" timestamp="2021-08-19T15:30:05" time="3.073" tests="1">
+    <testcase classname=" render" name=" render" time="0.418">
+      <failure>TestingLibraryElementError: Unable to find an element by: [data-testid=&quot;dashboard&quot;]
+
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;container&quot;
+    &gt;
+      &lt;div
+        class=&quot;dashboard-container&quot;
+      &gt;
+        &lt;div
+          class=&quot;dashboard-details-container&quot;
+        &gt;
+          &lt;div&gt;
+            &lt;div
+              class=&quot;dashboard-menu &quot;
+            &gt;
+              &lt;div
+                class=&quot;header-section&quot;
+              &gt;
+                &lt;h5&gt;
+                  Categories
+                &lt;/h5&gt;
+              &lt;/div&gt;
+              &lt;ul
+                class=&quot;m-3 pb-2&quot;
+              &gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;topics.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    All
+                  &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;benefits.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    Benefits
+                  &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;culture.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    Culture
+                  &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;interviews.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    Interviews
+                  &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;salary.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    Salaries
+                  &lt;/span&gt;
+                &lt;/li&gt;
+                &lt;li
+                  class=&quot;mb-3&quot;
+                &gt;
+                  &lt;img
+                    alt=&quot;&quot;
+                    src=&quot;poll.png&quot;
+                  /&gt;
+                  &lt;span&gt;
+                    Polls
+                  &lt;/span&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div
+            class=&quot;dashboard-user-feed&quot;
+          &gt;
+            .
+            &lt;div
+              style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+            &gt;
+              &lt;div
+                class=&quot;css-10sikco-SkeletonTheme&quot;
+              &gt;
+                &lt;p&gt;
+                  &lt;span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                  &lt;/span&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div
+              style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+            &gt;
+              &lt;div
+                class=&quot;css-10sikco-SkeletonTheme&quot;
+              &gt;
+                &lt;p&gt;
+                  &lt;span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                  &lt;/span&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div
+              style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+            &gt;
+              &lt;div
+                class=&quot;css-10sikco-SkeletonTheme&quot;
+              &gt;
+                &lt;p&gt;
+                  &lt;span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                  &lt;/span&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div
+              style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+            &gt;
+              &lt;div
+                class=&quot;css-10sikco-SkeletonTheme&quot;
+              &gt;
+                &lt;p&gt;
+                  &lt;span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                    &lt;span
+                      class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                      style=&quot;height: 5px;&quot;
+                    &gt;
+                      ‌
+                    &lt;/span&gt;
+                  &lt;/span&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;div
+                style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+              &gt;
+                &lt;div
+                  class=&quot;css-10sikco-SkeletonTheme&quot;
+                &gt;
+                  &lt;p&gt;
+                    &lt;span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div
+                style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+              &gt;
+                &lt;div
+                  class=&quot;css-10sikco-SkeletonTheme&quot;
+                &gt;
+                  &lt;p&gt;
+                    &lt;span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div
+                style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+              &gt;
+                &lt;div
+                  class=&quot;css-10sikco-SkeletonTheme&quot;
+                &gt;
+                  &lt;p&gt;
+                    &lt;span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div
+                style=&quot;width: 100%; height: 15%; background-color: rgb(255, 255, 255); padding: 2%; border-radius: 5px; margin-bottom: 2rem;&quot;
+              &gt;
+                &lt;div
+                  class=&quot;css-10sikco-SkeletonTheme&quot;
+                &gt;
+                  &lt;p&gt;
+                    &lt;span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                      &lt;span
+                        class=&quot;react-loading-skeleton css-1eg0sfo-skeletonStyles-Skeleton&quot;
+                        style=&quot;height: 5px;&quot;
+                      &gt;
+                        ‌
+                      &lt;/span&gt;
+                    &lt;/span&gt;
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div
+            class=&quot;suggestions-container&quot;
+          &gt;
+            &lt;div
+              class=&quot;header-section&quot;
+            &gt;
+              &lt;h5&gt;
+                Suggestions
+              &lt;/h5&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+    at Object.getElementError (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\@testing-library\dom\dist\config.js:37:19)
+    at E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\@testing-library\dom\dist\query-helpers.js:90:38
+    at E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\@testing-library\dom\dist\query-helpers.js:62:17
+    at getByTestId (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\@testing-library\dom\dist\query-helpers.js:111:19)
+    at Object.&lt;anonymous&gt; (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\src\components\Dashboard\__test__\Dashboard.test.js:22:10)
+    at Promise.then.completed (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\utils.js:216:10)
+    at _callCircusTest (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\run.js:149:3)
+    at _runTestsForDescribeBlock (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\run.js:63:9)
+    at run (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\run.js:25:3)
+    at runAndTransformResultsToJestFormat (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
+    at jestAdapter (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
+    at runTestInternal (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-runner\build\runTest.js:380:16)
+    at runTest (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-runner\build\runTest.js:472:34)
+    at Object.worker (E:\pesto\N5-DEV-SHARE-GAMMA-5\packages\frontend\node_modules\jest-runner\build\testWorker.js:133:12)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2021-08-19T15:30:05" time="3.725" tests="3">
+    <testcase classname=" should validate email pattern" name=" should validate email pattern" time="0.004">
+    </testcase>
+    <testcase classname=" check if email exists" name=" check if email exists" time="1.258">
+    </testcase>
+    <testcase classname=" render" name=" render" time="0.179">
+    </testcase>
+  </testsuite>
+</testsuites>
