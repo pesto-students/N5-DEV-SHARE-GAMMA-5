@@ -1,0 +1,52 @@
+@import '../../../main.scss';
+
+.modal-dialog {
+  min-width: 500px;
+  margin-top: 5rem;
+  box-shadow: 0 0 3px 3px $btn-primary-bg;
+  .close-btn {
+    cursor: pointer;
+    padding: 5px 5px 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.modal-body {
+  .input-group button {
+    min-width: 7rem;
+    background-color: #ffffff;
+    color: $btn-primary-bg;
+    border: 1px solid $btn-primary-bg;
+  }
+  .active-btn {
+    box-shadow: 2px 2px $btn-primary-bg;
+  }
+  input,
+  textarea {
+    font-weight: 500;
+  }
+  .form-select:focus {
+    box-shadow: 2px 2px $btn-primary-bg;
+  }
+  .search-data {
+    max-height: 200px !important;
+    overflow: auto;
+  }
+  .field-group {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    input {
+      width: 90%;
+    }
+    i {
+      color: #a19999;
+      cursor: pointer;
+    }
+  }
+}
+
+.modal-footer {
+  border: none;
+}

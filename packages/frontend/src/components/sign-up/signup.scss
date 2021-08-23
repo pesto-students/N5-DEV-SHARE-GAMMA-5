@@ -1,0 +1,79 @@
+@import '../../main.scss';
+body {
+  overflow: hidden;
+}
+.signup-container {
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  // background: linear-gradient(to bottom,$btn-primary-bg ,$btn-primary-dark-bg);
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  .signup-inner-container {
+    position: absolute;
+    background-color: #ffffff;
+    min-height: 60%;
+    min-width: 25%;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    display: grid;
+    align-items: center;
+    .signup-section {
+      height: 100%;
+      width: 100%;
+      form {
+        width: 100%;
+      }
+      label {
+        font-weight: bold;
+        color: #000000;
+        font-size: 0.8rem;
+      }
+      h6 {
+        color: $muted-text-color;
+        font-size: 1rem;
+        font-weight: bold;
+        span {
+          color: $btn-primary-bg;
+          font-weight: bolder;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+      .form-control:focus {
+        box-shadow: 2px 2px $btn-primary-bg;
+        border: 1px solid #cccccc;
+      }
+      .button-active {
+        width: 20rem;
+        height: 2.5rem;
+        border-radius: 30px;
+        border: none;
+        background-color: $btn-primary-bg;
+        color: #ffffff;
+        align-self: center;
+        font-weight: bold;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .button-disabled {
+        cursor: context-menu;
+        width: 20rem;
+        height: 2.5rem;
+        border-radius: 30px;
+        border: none;
+        background-color: $btn-disbaled-bg;
+        color: #ffffff;
+        align-self: center;
+        font-weight: bold;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

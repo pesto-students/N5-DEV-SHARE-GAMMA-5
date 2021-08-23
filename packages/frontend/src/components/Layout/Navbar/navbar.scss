@@ -1,0 +1,158 @@
+@import '../../../main.scss';
+.logo {
+  width: 10rem;
+  height: auto;
+}
+.navbar-toggler {
+  box-shadow: none;
+  border: 2px solid $focus-primary-color !important;
+  &:focus {
+    box-shadow: 2px 2px $focus-primary-color;
+    border: none;
+  }
+}
+.search-box {
+  // background-color: $search-input-bg;
+  border: none;
+  font-family: 'SegoeUI';
+  outline: none;
+  div {
+    border-radius: 5px !important;
+  }
+  .wrapper {
+    z-index: 1 !important;
+  }
+}
+
+.ask-btn {
+  background-color: $btn-primary-bg;
+  width: 7.5rem;
+  height: 2rem;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &:focus {
+    box-shadow: none;
+  }
+  &:hover {
+    color: #ffffff;
+  }
+  span {
+    font-weight: bold;
+    align-self: flex-start;
+  }
+}
+
+.nav-items {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    &:hover {
+      color: #000000;
+    }
+  }
+  .profile {
+    width: 2rem;
+    height: auto;
+  }
+  .dropdown-menu {
+    width: fit-content;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  .dropdown-item:active {
+    background-color: $btn-primary-bg;
+  }
+  .notification {
+    position: relative;
+    font-size: 25px;
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border-radius: 100%;
+      background-color: #ee3b2e;
+    }
+  }
+  button {
+    border: none !important;
+    &:hover,
+    &:active {
+      background-color: $btn-primary-bg !important;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+.nav-responsive {
+  display: none;
+}
+
+@media (max-width: 990px) and (min-width: 300px) {
+  nav {
+    .nav-items {
+      display: none;
+    }
+    .nav-responsive {
+      display: flex;
+      .settings {
+        margin-left: -2rem;
+      }
+    }
+    .search-box {
+      width: 80vw !important;
+      margin: 2% 0 2% 0;
+    }
+    .unauthorised {
+      display: block !important;
+      width: 100% !important;
+      margin: auto !important;
+      margin-top: 0.8rem !important;
+    }
+    ul {
+      width: 80vw !important;
+      display: grid;
+      place-items: center;
+      .ask-btn {
+        .ask-icon {
+          display: none;
+        }
+        width: 40vw !important;
+        margin: 2% 0;
+        justify-content: center;
+      }
+    }
+    .dropdown:hover .dropdown-menu {
+      display: unset;
+    }
+  }
+}
+@media (max-width: 420px) {
+  nav {
+    .search-box,
+    .nav-responsive {
+      width: 80vw;
+      margin: 1rem -2rem;
+    }
+    .nav-responsive {
+      margin-top: 0 !important;
+    }
+  }
+  .logo {
+    img {
+      width: 8rem;
+    }
+  }
+  .px-5 {
+    padding: 0 !important;
+  }
+}

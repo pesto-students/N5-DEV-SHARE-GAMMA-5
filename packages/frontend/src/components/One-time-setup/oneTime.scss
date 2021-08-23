@@ -1,0 +1,84 @@
+@import '../../main.scss';
+* {
+  font-family: 'Segoe UI';
+}
+.setup-container {
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  height: 90vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  .inner-container {
+    height: 85%;
+    overflow-y: auto;
+    width: 50%;
+    background: #ffffff;
+    padding: 2%;
+    // border: 2px solid #000000;
+   // box-shadow: 5px 5px #000000;
+  }
+  .setup-sub-title {
+    color: $muted-text-color;
+  }
+  .data-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    .company-item {
+      border: 1px solid $muted-text-color;
+      border-radius: 5px;
+      padding: 5%;
+      min-height: 100px;
+    }
+  }
+  button {
+    min-width: 8rem;
+    height: 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: $btn-primary-bg;
+    color: #ffffff;
+    align-self: center;
+    font-weight: bolder;
+    &:focus {
+      box-shadow: none;
+    }
+    // &.finish-btn {
+    //   background-color: $btn-primary-bg;
+    //   position: absolute;
+    //   bottom: 11%;
+    //   right: 32%;
+    // }
+  }
+}
+.finish-btn {
+  padding: 10px;
+  text-align: right;
+  width: 48%;
+  background-color: white;
+  position: absolute;
+  bottom: 7.5%;
+  right: 26%;
+}
+@media (min-width: 300px) and(max-width:600px) {
+  .inner-container {
+    width: 95% !important;
+    padding: 5%!important;
+  }
+  .data-container{
+    grid-template-columns: repeat(2,1fr) !important;
+    grid-gap: 0;
+  }
+}
+@media (min-width: 700px) and(max-width:1200px) {
+  .inner-container {
+    width: 95% !important;
+    padding: 5%!important;
+  }
+  .data-container{
+    grid-template-columns: repeat(3,1fr) !important;
+    grid-gap: 0;
+  }
+}

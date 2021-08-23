@@ -1,0 +1,42 @@
+@import '../../main.scss';
+
+.polls-container {
+  position: relative;
+  overflow-y: scroll;
+  height: 80vh;
+  width: 100%;
+  padding-bottom: 10%;
+}
+.poll-item-container {
+  background: #fff;
+  border-radius: 5px;
+  padding: 2%;
+  width: 98%;
+  .poll-options-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2%;
+    input {
+      cursor: pointer;
+    }
+    .form-check-input:checked {
+      background-color: $btn-primary-bg;
+      border-color: $btn-primary-bg;
+    }
+    .poll-option {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+  button {
+    background-color: $btn-primary-bg;
+    color: #ffffff;
+    &:focus {
+      box-shadow: none;
+    }
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}

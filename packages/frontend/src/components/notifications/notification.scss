@@ -1,0 +1,78 @@
+@import '../../main.scss';
+
+.notifications-container {
+  height: 95vh;
+  overflow: auto;
+  background-color: $primary-body-bg;
+  padding: 2% 5%;
+  
+  .notifications-details-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    // width: 95vw;
+    // height: 90%;
+    .notifications-menu {
+      ul {
+        // max-height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          width: 50%;
+          border-radius: 5px;
+          padding: 1%;
+          margin-top: 1rem;
+          img {
+            width: 30px;
+            height: 30px;
+          }
+          span {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    .notifications-item-container {
+      .empty-state {
+        height: 60vh;
+        display: grid;
+        place-items: center;
+        border-radius: 5px;
+      }
+      width: 50%;
+      .settings-loader {
+        display: grid;
+        place-items: center;
+        height: 40vh;
+      }
+      .notifications-item {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 5%;
+      }
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .settings-details-container {
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    .settings-menu {
+      margin-top: 5%;
+      ul {
+        flex-direction: row !important;
+        li {
+          padding: 2% !important;
+        }
+      }
+    }
+  }
+}
