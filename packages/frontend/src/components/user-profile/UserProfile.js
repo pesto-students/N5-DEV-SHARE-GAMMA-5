@@ -28,7 +28,7 @@ const UserProfile = ({ match }) => {
         setSkills(result);
       }
     };
-    useEffect(() => splitSkills(), {});
+    useEffect(() => splitSkills(), []);
     if (skills) {
       return (
         <div className='skills-section'>

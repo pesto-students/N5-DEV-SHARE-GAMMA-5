@@ -88,14 +88,14 @@ const Landing = () => {
             <h1>Welcome</h1>
             <form>
               <div className='mt-2 '>
-                <label htmlFor='nickName' className='form-label'>
+                <label htmlFor='workEmail' className='form-label'>
                   Work email
                 </label>
                 <input
                   ref={emailRef}
                   type='text'
                   className='form-control '
-                  id='nickname'
+                  id='workEmail'
                   aria-describedby='emailHelp'
                   placeholder='mail@company.com'
                   required
