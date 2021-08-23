@@ -5,7 +5,8 @@
 ## Table of Contents
 
 - [Stakeholders](#stakeholders)
-
+- [Installation and Setup](#installation-and-setup)
+- [Environments and Deployments](#environments-and-deployments)
 - [Artefacts](#artefacts)
 
 - [Performance Screenshot](#performance-screenshot)
@@ -24,7 +25,7 @@
 
 - Narendra Joshi - [LinkedIn](https://www.linkedin.com/in/narendra-joshi/) - [GitHub](https://github.com/joshinar)
 
-## Installation & Setup
+## Installation and Setup
 
 - Run `git clone https://github.com/pesto-students/N5-DEV-SHARE-GAMMA-5.git`
 
@@ -35,6 +36,15 @@
 - Add `.env file in ./packages/frontend with firebase config`
 
 - Run `npm run start`
+
+## Environments and Deployments
+
+| Environment | Base URL | Description  
+| :-------:   | :------: | :----------:
+| Development | [http://localhost:3000](http://localhost:3000) | When running locally on machine 
+| QA| [https://qa-devshare.netlify.app/](https://qa-devshare.netlify.app/) | QA  Environment 
+| Staging | [https://staging-devshare.netlify.app/](https://staging-devshare.netlify.app/) | Staging Environment
+| Production | [https://devshare.netlify.app/](https://devshare.netlify.app/) | Main production environment  
 
 ## Artefacts
 
@@ -87,13 +97,10 @@
 ## Tech Stack
 
 - React JS
+- SCSS
 
 - Node JS / Express JS
 
 - Firebase (Firestore DB, Authentication, Storage)
-
-- Netlify
-
-- Heroku
 
 - Jest
