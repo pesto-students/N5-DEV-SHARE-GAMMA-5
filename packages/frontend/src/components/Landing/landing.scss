@@ -27,9 +27,9 @@ body {
     .login-section {
       width: 70%;
       .test-btn {
-        background-color: $btn-primary-bg;
-        color: #ffffff;
+        color: $btn-primary-bg;
         font-weight: 500;
+        border: 1px solid $btn-primary-bg;
       }
       h1 {
         color: $muted-text-color;

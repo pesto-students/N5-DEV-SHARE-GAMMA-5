@@ -83,7 +83,7 @@ const Landing = () => {
                 });
               }}
             >
-              Login with Test a/c
+              Click here to fill demo login details
             </button>
             <h1>Welcome</h1>
             <form>
