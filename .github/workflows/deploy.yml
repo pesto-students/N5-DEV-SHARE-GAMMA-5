@@ -2,8 +2,7 @@ name: devshare
 
 on:
   push:
-    branches:
-      -master
+    branches: -master
   pull_request:
     branches:
       - master
@@ -14,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: cd frontend && npm install
-      - run: cd frontend && npm run lint
+      - run: cd packages/frontend && npm install
+      - run: cd packages/frontend && npm run lint

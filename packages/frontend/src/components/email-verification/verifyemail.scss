@@ -1,0 +1,26 @@
+@import '../../main.scss';
+.verify-email-container {
+  background-color: $btn-primary-dark-bg;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  .verify-text-container {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    min-height: 50%;
+    display: grid;
+    place-items: center;
+    button {
+      background-color: $btn-primary-bg;
+    }
+  }
+}
+.post-verification-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
