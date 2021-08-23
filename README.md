@@ -40,9 +40,9 @@
 ## Environments and Deployments
 
 | Environment | Base URL | Description  
-| :-------:   | :------: | :----------: | :--------: |
+| :-------:   | :------: | :----------:
 | Development | [http://localhost:3000](http://localhost:3000) | When running locally on machine 
-| QA| [https://qa-devshare.netlify.app/](https://preproduction-sector17.netlify.app) | QA  Environment | 
+| QA | [https://qa-devshare.netlify.app/](https://preproduction-sector17.netlify.app) | QA  Environment 
 | Staging | [https://staging-devshare.netlify.app/](https://staging-sector17.netlify.app) | Staging Environment
 | Production | [https://devshare.netlify.app/](https://sector17.netlify.app/) | Main production environment  
 
