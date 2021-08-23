@@ -55,7 +55,7 @@ const Polls = () => {
       {polls && (
         <div className='polls-container'>
           {polls.map((poll) => (
-            <PollItem poll={poll} fetchPolls={fetchPolls} />
+            <PollItem poll={poll} fetchPolls={fetchPolls} key={poll.id} />
           ))}
         </div>
       )}

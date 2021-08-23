@@ -187,7 +187,7 @@ const Dashboard = ({ location }) => {
               <FixedSizeList
                 height={800}
                 width='100%'
-                itemSize={180}
+                itemSize={160}
                 itemCount={userFeed.length}
                 className='virtual-class'
               >
@@ -201,7 +201,7 @@ const Dashboard = ({ location }) => {
             </div>
             {companies
               && companies.map((company) => (
-                <Link to={`/company/${company.name}`}>
+                <Link to={`/company/${company.name}`} key={company.imageUrl}>
                   <div className='company-item'>
                     <img src={company.imageUrl} alt='' height={35} />
                     <h6>{company.name}</h6>

@@ -34,7 +34,7 @@ const CompanyPoll = ({ companyName }) => {
         {polls && (
           <div>
             {polls.map((poll) => (
-              <PollItem poll={poll} fetchPolls={fetchPolls} />
+              <PollItem poll={poll} fetchPolls={fetchPolls} key={poll.id} />
             ))}
           </div>
         )}
