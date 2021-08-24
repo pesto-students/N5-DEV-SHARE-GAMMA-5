@@ -37,7 +37,7 @@ const SignUp = () => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = setTimeout(() => setError(''), 3000);
+    const unsubscribe = setTimeout(() => setError(''), 5000);
     return () => clearTimeout(unsubscribe);
   }, [error]);
 
@@ -78,7 +78,7 @@ const SignUp = () => {
       return;
     }
     if (emailHandles.includes(emailDomain)) {
-      setError('Please use a work email');
+      setError('Gmail Yahoo, hotmail are not allowed');
       return;
     }
     const isEmailExists = await checkIfEmailExists(email);
