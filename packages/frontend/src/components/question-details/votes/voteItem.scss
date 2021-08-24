@@ -1,0 +1,13 @@
+@import '../../../main.scss';
+
+.votes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -0.5rem;
+  img {
+    cursor: pointer;
+    height: 20px !important;
+    width: 20px !important;
+  }
+}

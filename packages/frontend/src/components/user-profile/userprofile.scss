@@ -1,0 +1,135 @@
+@import '../../main.scss';
+.profile-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  .background-container {
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #58adf1;
+  }
+  .profile-details-container {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    .profile-img {
+      display: block;
+      min-height: 10vh;
+      margin: auto;
+      transform: translateY(-80%);
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+    .profile-name {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: -2rem;
+      font-weight: bold;
+    }
+    .basic-details {
+      display: flex;
+      margin-top: 2rem;
+      width: 50%;
+      margin: auto;
+      justify-content: center;
+      li {
+        display: flex;
+        margin: 1rem 1rem 0 0;
+        img {
+          height: 20px;
+          margin-right: 0.7rem;
+        }
+      }
+    }
+    .work-education-details {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    button {
+      background-color: $btn-primary-bg;
+      display: block;
+      margin: auto;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+  .profile-additionals-container {
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 2fr;
+    margin: auto;
+    border: none;
+    padding: 0;
+    margin-top: 1rem;
+    .skills-container {
+      padding-left: 0.5rem;
+      max-height: 40vh !important;
+      margin:2% 0 0 2%;
+    }
+    .user-activity-container {
+      border: none;
+      width: 100%;
+      .question-item {
+        width: 100%;
+        padding: 5%;
+        &:hover {
+          box-shadow: 2px 2px 2px $btn-primary-bg;
+        }
+      }
+    }
+    .skills-section {
+      max-height: 28vh !important;
+      width: 100%;
+      overflow: auto;
+      margin: 0;
+      border: none;
+    }
+  }
+}
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   box-shadow: inset 0 0 5px grey;
+//   border-radius: 10px;
+// }
+
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: $btn-primary-bg;
+//   border-radius: 10px;
+// }
+
+@media (min-width: 300px) and (max-width: 900px) {
+  .profile-details-container {
+    width: 100% !important;
+    .basic-details {
+      width: 100% !important;
+    }
+    .work-education-details {
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+      height: 100%;
+      .title {
+        font-weight: bolder;
+      }
+    }
+  }
+  .profile-additionals-container {
+    width: 100% !important;
+    padding: 2% !important;
+    .skills-container {
+      height: 40vh !important;
+      width: 100% !important;
+      .skills-section {
+        height: 40vh !important;
+      }
+    }
+  }
+}

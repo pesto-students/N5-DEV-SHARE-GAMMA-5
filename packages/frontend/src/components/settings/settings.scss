@@ -1,0 +1,72 @@
+@import '../../main.scss';
+
+.settings-container {
+  height: 95vh;
+  background-color: $primary-body-bg;
+  padding: 2% 5%;
+  .title {
+    font-weight: bold;
+    span {
+      color: $btn-primary-bg;
+    }
+  }
+  .settings-details-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 95vw;
+    height: 90%;
+    .settings-menu {
+      ul {
+        // max-height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          width: 50%;
+          border-radius: 5px;
+          padding: 1%;
+          margin-top: 1rem;
+          img {
+            width: 30px;
+            height: 30px;
+          }
+          span {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    .settings-details {
+      overflow-y: auto;
+      .settings-loader {
+        display: grid;
+        place-items: center;
+        width: 50%;
+        height: 80%;
+      }
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .settings-details-container {
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    .settings-menu {
+      margin-top: 5%;
+      ul {
+        flex-direction: row !important;
+        li {
+          padding: 2% !important;
+        }
+      }
+    }
+  }
+}

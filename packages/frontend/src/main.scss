@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'SegoeUI';
+  src: url('./fonts/Segoe-UI.ttf');
+}
+* {
+  font-family: 'Segoe UI';
+  list-style: none;
+  text-decoration: none;
+}
+
+$btn-primary-light-bg: #cde3f3;
+$btn-primary-bg: #2196f3;
+$btn-primary-dark-bg: #1f6ba8;
+$btn-disbaled-bg: #6285a1e3;
+$focus-primary-color: #2196f3;
+$search-input-bg: #eef0f1;
+$muted-text-color: #837f7f;
+$notFound-bg-color: #2196f3;
+$primary-body-bg: #dde7f0f5;
+.form-control:focus {
+  box-shadow: 2px 2px $btn-primary-bg;
+  border: 1px solid #cccccc;
+}
+
+body {
+  background: $primary-body-bg;
+}
+nav {
+  background-color: white;
+}
+
+.btn-primary {
+  background: $btn-primary-bg;
+}
+
+.eOPJCx , .logo{
+  fill: $btn-primary-bg !important;
+}
